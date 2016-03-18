@@ -1,0 +1,160 @@
+{% extends 'base.html.twig' %}
+
+
+{% set activeMenu = "Dashboard" %}
+
+{% block breadcrumb %}
+  <li><a href="#">Inicio</a></li>
+  <li class="active">Estado General</li>
+{% endblock %}
+
+{% block sectionBody %}
+<div class="row">
+  <div class="col-md-7">
+    {% if status is not empty %}
+      <div class="alert {% if status %} alert-success {% else %}alert-danger {% endif %} alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Atencion!</strong> {{msj}}
+      </div>
+    {% endif %}
+    <h1>Lista de Prestamos Activos</h1>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Alumno</th>
+                <th>Realizado el</th>
+                <th>Productos</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for prestamo in prestamosActivos %}
+            <tr>
+              <td>{{ prestamo.id }}</td>
+                <td>{{ prestamo.usuario.apellido }}, {{ prestamo.usuario.nombre }}</td>
+                <td>{% if prestamo.fecha %}{{ prestamo.fecha |date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                  <ul class="list-group">
+                    {% for producto in prestamo.products %}
+                      <li  class="list-group-item">{{producto.product}}</li>
+                    {% endfor %}
+                  </ul>
+                </td>
+                <td>
+                  <a class="btn btn-primary" href="" title="Devolucion Parcial"><i class="material-icons">&#xE876;</i></a>
+                  <a class="btn btn-success" href="" title="Devolucion Total"><i class="material-icons">&#xE877;</i></a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+  </div>
+  <div class="col-md-5">
+    <article class="card">
+      <form class="form" action="{{ path('la_fuente_prestamo_homepage') }}" method="post">
+        <div class="card-head bg-primary">
+          <header>Realizar Prestamo</header>
+        </div>
+
+        <div class="card-body bg-primary form-inverse">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group label-floating is-empty">
+                  <label for="dniAlumno"  class="control-label">DNI del Alumno</label>
+                  <input type="number" list="alumnos" class="form-control" id="dniAlumno" name="alumno">
+                <datalist id="alumnos">
+                  {% for alumno in alumnos %}
+                    <option data-value="{{alumno.id}}" value="{{alumno.dni}}"></option>
+                  {% endfor %}
+                </datalist>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="nav-head">
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#mate" data-toggle="tab">Mate</a></li>
+            <li><a href="#pingPong" data-toggle="tab">Ping Pong</a></li>
+            <li><a href="#otros" data-toggle="tab">Otros</a></li>
+          </ul>
+        </div>
+
+        <div class="card-body tab-content">
+
+          <div class="tab-pane fade active in" id="mate">
+            <div class="row">
+              <div class="col-md-7">
+                <div class="form-group">
+                  <label for="NroTermo" class="control-label">Numero de Termo</label>
+                  <input type="number" list="listTermos" class="form-control" id="NroTermo" name="producto[termo]">
+                  <datalist id="listTermos">
+                    {% for termo in termos %}
+                      <option data-value="{{termo.id}}" value="{{termo.numero}}"></option>
+                    {% endfor %}
+                  </datalist>
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="form-group">
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" id="inputMate" name="producto[mate]"><span class="checkbox-material"></span> Mate <span class="label label-primary" id="cantMates">{{cant.mates}}</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" id="inputBombilla" name="producto[bombilla]"><span class="checkbox-material"></span> Bombilla <span class="label label-primary" id="cantBombillas">{{cant.bombillas}}</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+
+          <div class="tab-pane fade" id="pingPong">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <div class="checkbox">
+                    <label for="inputPaleta" class="control-label">Paletas <span class="label label-primary" id="cantPaletas">{{cant.paletas}}</span></label>
+                    <input type="number" class="form-control" id="inputPaleta" name="producto[paletas]">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" id="inputPelota" name="producto[pelota]"><span class="checkbox-material"></span> Pelota <span class="label label-primary" id="cantPelotas">{{cant.pelotas}}</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="otros">
+
+          </div>
+
+        </div>
+        <footer class="card-actionbar">
+          <div class="card-actionbar-row">
+            <a href="#" class="btn btn-flat btn-danger">Cancelar</a>
+            <button class="btn btn-primary" type="submit">Realizar</button>
+          </div>
+        </footer>
+      </form>
+    </article>
+  </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+  <script src="{{ asset('js/laFuente/pages/indexPrestamo.js') }}" type="text/javascript" charset="utf-8"></script>
+{% endblock %}

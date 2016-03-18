@@ -1,0 +1,24 @@
+producto_bombilla_index:
+    path:     /
+    defaults: { _controller: "LaFuentePrestamoBundle:Bombilla:index" }
+    methods:  [GET, POST]
+
+producto_bombilla_show:
+    path:     /{id}/show
+    defaults: { _controller: "LaFuentePrestamoBundle:Bombilla:show" }
+    methods:  GET
+
+producto_bombilla_new:
+    path:     /new
+    defaults: { _controller: "LaFuentePrestamoBundle:Bombilla:new" }
+    methods:  [GET, POST]
+
+producto_bombilla_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "LaFuentePrestamoBundle:Bombilla:edit" }
+    methods:  [GET, POST]
+
+producto_bombilla_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "LaFuentePrestamoBundle:Bombilla:delete" }
+    methods:  GET

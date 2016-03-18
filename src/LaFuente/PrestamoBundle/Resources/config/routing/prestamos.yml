@@ -1,0 +1,4 @@
+prestamos_index:
+    path:     /bitacora
+    defaults: { _controller: "LaFuentePrestamoBundle:Prestamo:index" }
+    methods:  GET

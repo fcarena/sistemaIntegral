@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+
+{% set activeMenu = "Bitacora" %}
+
+{% block breadcrumb %}
+  <li><a href="#">Prestamos</a></li>
+  <li class="active">Finalizados</li>
+{% endblock %}
+
+{% block sectionBody %}
+<div class="row">
+  <div class="col-md-12">
+
+    <h1>Lista de Prestamos Finalizados</h1>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Alumno DNI</th>
+                <th>Alumno Nombre</th>
+                <th>Realizado el</th>
+                <th>Realizado por</th>
+                <th>Recibido el</th>
+                <th>Productos</th>
+                <th>Descripcion</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for prestamo in prestamosFinalizados %}
+            <tr>
+              <td>{{ prestamo.id }}</td>
+                <td>{{ prestamo.usuario.dni }}</td>
+                <td>{{ prestamo.usuario.apellido }}, {{ prestamo.usuario.nombre }}</td>
+                <td>{% if prestamo.fecha %}{{ prestamo.fecha |date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ prestamo.prestador.username }}</td>
+                <td>{% if prestamo.fechaRecibido %}{{ prestamo.fechaRecibido |date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ prestamo.usuario.dni }}</td>
+                <td>
+                  <ul class="list-group">
+                    {% for producto in prestamo.products %}
+                      <li  class="list-group-item">{{producto.product}}</li>
+                    {% endfor %}
+                  </ul>
+                </td>
+                <td>{{ prestamo.descripcion }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+  {#<script src="{{ asset('js/laFuente/pages/indexPrestamo.js') }}" type="text/javascript" charset="utf-8"></script>#}
+{% endblock %}

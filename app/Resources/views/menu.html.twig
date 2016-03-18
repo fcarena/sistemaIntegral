@@ -1,0 +1,27 @@
+{% if not activeMenu is defined %}{% set activeMenu = "" %}{% endif %}
+{% if not activeSubMenu is defined %}{% set activeSubMenu = "" %}{% endif %}
+<ul class="metismenu" id="menu">
+  <li{% if activeMenu == "Dashboard" %} class="active"{% endif %}>
+    <a href="{{ path('la_fuente_prestamo_homepage') }}"><div class="icon"><i class="mi">&#xE88A;</i></div> <span class="title">Inicio</span></a>
+  </li>
+  <li{% if activeMenu == "Bitacora" %} class="active"{% endif %}>
+    <a href="{{ path('prestamos_index') }}"><div class="icon"><i class="mi">&#xe862;</i></div> <span class="title">Bitacora</span></a>
+  </li>
+  <li {% if activeMenu == "Productos" %} class="active"{% endif %}>
+    <a href="#" aria-expanded="true"><div class="icon"><i class="mi">&#xE8EF;</i></div> <span class="title">Productos <i class="mi expand pull-right"></i></span></a>
+    <ul aria-expanded="true">
+      <li {% if activeSubMenu == "Termo" %} class="active"{% endif %}><a href="{{ path('producto_termo_index')}}" aria-expanded="false">  Termo</a></li>
+      <li  {% if activeSubMenu == "Mate" %} class="active"{% endif %}><a href="{{ path('producto_mate_index')}}" aria-expanded="false"> Mate</a></li>
+      <li  {% if activeSubMenu == "Bombilla" %} class="active"{% endif %}><a href="{{ path('producto_bombilla_index')}}" aria-expanded="false"> Bombilla</a></li>
+      <li  {% if activeSubMenu == "Paleta" %} class="active"{% endif %}><a href="{{ path('producto_raqueta_index')}}" aria-expanded="false">  Paleta</a></li>
+      <li  {% if activeSubMenu == "Pelota" %} class="active"{% endif %}><a href="{{ path('producto_pelota_index')}}" aria-expanded="false"> Pelota</a></li>
+    </ul>
+  </li>
+  <li{% if activeMenu == "Usuarios" %} class="active"{% endif %}>
+    <a href="{{ path('registro') }}"><div class="icon"><i class="mi">&#xe7fe;</i></div> <span class="title">Crear Usuario</span></a>
+  </li>
+  <li{% if activeMenu == "listaUsuarios" %} class="active"{% endif %}>
+    <a href="{{path('usuario_index')}}"><div class="icon"><i class="mi">&#xE7FB;</i></div> <span class="title">Listado de Usuarios</span></a>
+  </li>
+
+</ul>

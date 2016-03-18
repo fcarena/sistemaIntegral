@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+
+{% set activeMenu = "listaUsuarios" %}
+
+{% block breadcrumb %}
+  <li><a href="#">Usuaio</a></li>
+  <li class="active">Listado</li>
+{% endblock %}
+
+{% block sectionBody %}
+    <h1>Lista de Usuarios</h1>
+
+    <div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>DNI</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Celular</th>
+                <th>Ultimo Acceso</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in usuarios %}
+            {% if entity.enabled %}
+            <tr>
+                <td><a href="">{{ entity.id }}</a></td>
+                <td>{{ entity.dni }}</td>
+                <td>{{ entity.username }}</td>
+                <td>{{ entity.email }}</td>
+                <td>{{ entity.celular }}</td>
+                <td>{{ entity.lastLogin is null ? "Nunca" : entity.lastLogin|date("m/d/Y") }}</td>
+            </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+  {% endblock %}
+
+  {% block javascripts %}
+    {#<script src="{{ asset('js/laFuente/pages/indexPrestamo.js') }}" type="text/javascript" charset="utf-8"></script>#}
+  {% endblock %}

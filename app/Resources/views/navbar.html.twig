@@ -1,0 +1,61 @@
+<nav class="headerbar">
+    <div class="headerbar-left">
+        <ul class="header-nav header-nav-options">
+            <li class="header-nav-brand">
+                <div class="brand-holder">
+                    <a href="#">
+                        <span class="text-lg text-bold text-warning">PRESTAMOS</span>
+                    </a>
+                </div>
+            </li>
+            <li class="hidden-xs"><a href="javascript:toggleMainMenu();" id="toggle-main-menu"><i class="mi">&#xE8FE;</i></a></li>
+        </ul>
+    </div>
+    <div class="headerbar-right toggle-menu">
+        <ul class="header-nav header-nav-options">
+            <li><a href="#" data-toggle="collapse" data-target="#mainMenu"><i class="mi">&#xE8FE;</i></a></li>
+        </ul>
+    </div>
+    <div class="headerbar-right secondbar">
+        <ul class="header-nav header-nav-options">
+            <li class="dropdown">
+                <a href="#" data-target="dropdown-menu" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="mi">&#xE7F4;</i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="#">
+                            <div class="alert alert-callout alert-primary">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <h4 class="media-heading">{{app.user.apellido}}, {{app.user.nombre}}</h4>
+                                        En Prestamo!
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li><a href="#">Ver todos los prestamos</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="header-nav profile">
+            <li class="dropdown">
+                <a href="#" data-target="dropdown-menu" class="dropdown-toggle" data-toggle="dropdown">
+                    <img src="{% if app.user.imageType %}data:{{app.user.getImageType() }};base64,{{ app.user.getImage()  }}{% else %}{{ asset('images/profile.jpg') }}{% endif %}" alt="" class="img-circle">
+                    <span class="info">
+                        {{app.user.apellido}}, {{app.user.nombre}}
+                        <small>{{ app.user.roles[0] |replace({'ROLE_SUPER_ADMIN': "Super Administrador", 'ROLE_ADMIN': "Administrador", 'ROLE_USER': "Alumno"}) }}</small>
+                    </span>
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#"><i class="mi">&#xE7FD;</i> Perfil</a></li>
+                    <li><a href="#"><i class="mi">&#xE899;</i> Lock</a></li>
+                    <li><a href="{{ path('fos_user_security_logout') }}"><i class="mi">&#xE8AC;</i> Cerrar Sesión</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>

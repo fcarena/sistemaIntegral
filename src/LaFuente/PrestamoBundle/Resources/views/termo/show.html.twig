@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+
+{% set activeMenu = "producto" %}
+
+{% block breadcrumb %}
+  <li><a href="#">Producto</a></li>
+  <li class="active">Ver Termo</li>
+{% endblock %}
+
+{% block sectionBody %}
+    <h1>Termo</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Numero</th>
+                <td>{{ termo.numero }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ termo.id }}</td>
+            </tr>
+            <tr>
+                <th>Createdat</th>
+                <td>{% if termo.createdAt %}{{ termo.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Availability</th>
+                <td>{% if termo.availability %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Notes</th>
+                <td>{{ termo.notes }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('producto_termo_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('producto_termo_edit', { 'id': termo.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+    {% endblock %}
+
+    {% block javascripts %}
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3SbyFGlZKCWqTkydIlRHcUWPgPJyfqrA&callback=laFuentePrestamos.newUserPage.initGoogleMaps" async defer ></script>
+      <script src="{{ asset('js/imageViewer.js') }}" type="text/javascript" charset="utf-8"></script>
+      <script src="{{ asset('js/laFuente/pages/newUser.js') }}" type="text/javascript" charset="utf-8"></script>
+    {% endblock %}

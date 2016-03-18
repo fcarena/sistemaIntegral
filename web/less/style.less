@@ -1,0 +1,72 @@
+@import '../css/pre-compiled.min.css';
+
+@import 'bootstrap/variables';
+@import '../bower_components/bootstrap-material-design/less/_variables';
+@import "../bower_components/bootstrap-material-design/less/_colors.less";
+@import "../bower_components/bootstrap-material-design/less/_mixins.less";
+
+//Custom
+@import 'variables';
+
+html,
+body,
+.full-height {
+  height: 100%;
+}
+
+body {
+  font-family: Roboto, "Roboto", sans-serif, Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.846153846;
+  font-weight: 400;
+  background-color: #e5e6e6;
+  background-size: 100% 100%;
+  color: #313534;
+  -ms-overflow-style: scrollbar;
+}
+
+.mi {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  vertical-align: middle;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+.nano{
+  .nano-pane{
+    width: 6px;
+    z-index: 6000;
+    
+    &,
+    .nano-slider{
+      border-radius: 0;
+    }
+  }
+}
+
+@import 'helpers';
+@import 'navbar';
+@import 'mainMenu';
+@import 'main';
+@import 'cards';
+@import 'contacts';
+@import 'forms';
+@import 'alerts';

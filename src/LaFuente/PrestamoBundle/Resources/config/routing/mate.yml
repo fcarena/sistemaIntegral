@@ -1,0 +1,19 @@
+producto_mate_index:
+    path:     /
+    defaults: { _controller: "LaFuentePrestamoBundle:Mate:index" }
+    methods:  [GET, POST]
+
+producto_mate_show:
+    path:     /{id}/show
+    defaults: { _controller: "LaFuentePrestamoBundle:Mate:show" }
+    methods:  GET
+
+producto_mate_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "LaFuentePrestamoBundle:Mate:edit" }
+    methods:  [GET, POST]
+
+producto_mate_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "LaFuentePrestamoBundle:Mate:delete" }
+    methods:  GET

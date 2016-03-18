@@ -1,0 +1,19 @@
+producto_raqueta_index:
+    path:     /
+    defaults: { _controller: "LaFuentePrestamoBundle:Raqueta:index" }
+    methods:  [GET, POST]
+
+producto_raqueta_show:
+    path:     /{id}/show
+    defaults: { _controller: "LaFuentePrestamoBundle:Raqueta:show" }
+    methods:  GET
+
+producto_raqueta_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "LaFuentePrestamoBundle:Raqueta:edit" }
+    methods:  [GET, POST]
+
+producto_raqueta_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "LaFuentePrestamoBundle:Raqueta:delete" }
+    methods:  GET

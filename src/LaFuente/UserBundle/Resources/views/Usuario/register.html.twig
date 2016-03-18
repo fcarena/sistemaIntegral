@@ -1,0 +1,200 @@
+{% extends 'base.html.twig' %}
+
+
+{% set activeMenu = "Usuarios" %}
+
+{% block breadcrumb %}
+  <li><a href="#">Usuarios</a></li>
+  <li class="active">Nuevo usuario</li>
+{% endblock %}
+
+{% block sectionBody %}
+<div class="contain-lg">
+  {% if msj is defined %}
+    <div id="login-error" class="alert {% if estado %} alert-success {% else %}alert-danger {% endif %}">{{msj}}</div>
+  {% endif %}
+  <div class="row">
+    <div class="col-xs-12">
+      <article class="card">
+        <form class="form" action="{{ path('registrar') }}" method="post" enctype='multipart/form-data'>
+          <div class="card-head bg-primary">
+            <header>Agrega un usuario</header>
+            <div class="tools tools-togglebuttons">
+              <ul class="list-inline">
+                <li class="togglebutton togglebutton-material-red">
+                  <label data-toggle="tooltip" data-placement="bottom" title="Bloqueado"><input type="checkbox" ></label>
+                </li>
+                <li class="togglebutton togglebutton-material-orange">
+                  <label data-toggle="tooltip" data-placement="bottom" title="Expirado"><input type="checkbox"></label>
+                </li>
+                <li class="togglebutton togglebutton-material-green">
+                  <label data-toggle="tooltip" data-placement="bottom" title="Habilitado"><input type="checkbox" checked></label>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-body bg-primary form-inverse">
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                        <input class="form-control floating-label input-lg" name="nombre" id="inputNombre" type="text" placeholder="Nombre" required>
+                    </div>
+                  </div><!--end .col -->
+                  <div class="col-md-6">
+                    <div class="form-group">
+                        <input class="form-control floating-label input-lg" name="apellido" id="inputApellido" type="text" placeholder="Apellido" required>
+                    </div>
+                  </div><!--end .col -->
+                </div><!--end .row -->
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                        <input class="form-control floating-label input-lg" name="dni" id="inputDni" type="text" placeholder="DNI" required>
+                    </div>
+                  </div><!--end .col -->
+                  <div class="col-md-6">
+                    <div class="form-group">
+                        <input class="form-control floating-label input-lg" name="telefono" id="inputTel" type="text" placeholder="Teléfono">
+                    </div>
+                  </div><!--end .col -->
+                </div><!--end .row -->
+              </div><!--end .col -->
+            </div><!--end .row -->
+          </div>
+
+          <div class="nav-head">
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#datos" data-toggle="tab">Datos Personales</a></li>
+              <li><a href="#usuario" data-toggle="tab">Usuario</a></li>
+              <li><a href="#notas" data-toggle="tab">Notas</a></li>
+            </ul>
+          </div>
+
+          <div class="card-body tab-content">
+
+            <div class="tab-pane fade active in" id="datos">
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="row">
+                    <div class="col-md-8">
+                      <div class="form-group">
+                        <label for="mail" class="control-label">Email</label>
+                        <input type="email" class="form-control" id="inputMail" name="mail" required>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="sexo" class="control-label">Sexo</label>
+                        <select id="sexo" class="form-control" name="sexo">
+                          <option>Hombre</option>
+                          <option>Mujer</option>
+                          <option>Otro</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="direccion.calle" class="control-label">Calle</label>
+                        <input type="text" class="form-control" id="inputStreet" name="direccion.calle">
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="direccion.numero" class="control-label">Número</label>
+                        <input type="numeric" class="form-control" id="inputNumber" name="direccion.numero">
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="direccion.ciudad" class="control-label">Ciudad</label>
+                        <input type="text" class="form-control" id="inputCity" name="direccion.ciudad">
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="direccion.zip" class="control-label">Zip</label>
+                        <input type="numeric" class="form-control" id="inputZip" name="direccion.zip">
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="col-md-4">
+                  <div id="addressMap" class="height-7"></div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="notas">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="notes" class="control-label">Notas</label>
+                    <textarea class="form-control" rows="10" id="inputNotes" name="notes"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="usuario">
+              <div class="row">
+
+                <div class="col-md-8">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="telefono" class="control-label">Nombre de Usuario</label>
+                        <input type="text" class="form-control" id="inputUsername" name="username" >
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="password" class="control-label">Contraseña</label>
+                        <input type="password" class="form-control" id="inputPassword" name="password" autocomplete="off" >
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group margin-bottom-xxl">
+                        <label for="foto" class="control-label">Foto de Perfil</label>
+                        <input type="text" readonly="" class="form-control floating-label" placeholder="Browse...">
+                        <input type="file" id="foto" name="foto">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="text-center" id="preview">
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+          <footer class="card-actionbar">
+            <div class="card-actionbar-row">
+              <a href="#" class="btn btn-flat btn-danger">Cancelar</a>
+              <button class="btn btn-primary" type="submit">Guardar</button>
+            </div>
+          </footer>
+        </form>
+      </article>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3SbyFGlZKCWqTkydIlRHcUWPgPJyfqrA&callback=laFuentePrestamos.newUserPage.initGoogleMaps" async defer ></script>
+  <script src="{{ asset('js/imageViewer.js') }}" type="text/javascript" charset="utf-8"></script>
+  <script src="{{ asset('js/laFuente/pages/newUser.js') }}" type="text/javascript" charset="utf-8"></script>
+{% endblock %}

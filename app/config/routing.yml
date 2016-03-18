@@ -1,0 +1,7 @@
+la_fuente_user:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+la_fuente_prestamo:
+    resource: "@LaFuentePrestamoBundle/Resources/config/routing.yml"
+    prefix:   /prestamo

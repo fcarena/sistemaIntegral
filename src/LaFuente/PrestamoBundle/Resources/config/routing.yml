@@ -1,0 +1,29 @@
+la_fuente_prestamo_producto_pelota:
+    resource: "@LaFuentePrestamoBundle/Resources/config/routing/pelota.yml"
+    prefix:   /producto/pelota
+
+la_fuente_prestamo_producto_mate:
+    resource: "@LaFuentePrestamoBundle/Resources/config/routing/mate.yml"
+    prefix:   /producto/mate
+
+la_fuente_prestamo_producto_termo:
+    resource: "@LaFuentePrestamoBundle/Resources/config/routing/termo.yml"
+    prefix:   /producto/termo
+
+
+la_fuente_prestamo_producto_raqueta:
+    resource: "@LaFuentePrestamoBundle/Resources/config/routing/raqueta.yml"
+    prefix:   /producto/raqueta
+
+
+la_fuente_prestamo_homepage:
+    path:     /
+    defaults: { _controller: LaFuentePrestamoBundle:Default:index }
+
+la_fuente_prestamo_producto_bombilla:
+    resource: "@LaFuentePrestamoBundle/Resources/config/routing/bombilla.yml"
+    prefix:   /producto/bombilla
+
+la_fuente_prestamo_prestamos:
+    resource: "@LaFuentePrestamoBundle/Resources/config/routing/prestamos.yml"
+    prefix:   /prestamos

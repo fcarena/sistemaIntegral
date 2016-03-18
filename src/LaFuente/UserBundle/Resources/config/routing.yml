@@ -1,0 +1,30 @@
+#fos_user:
+#    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+index:
+    path: /
+    defaults: { _controller: UserBundle:Security:index }
+
+usuario_index:
+    path: /Usuarios/lista
+    defaults: { _controller: UserBundle:Profile:index }
+
+login_check:
+    path: /login_check
+
+logout:
+    path: /logout
+
+login:
+    path: /login
+    defaults: { _controller: UserBundle:Security:login }
+
+registrar:
+    path: /registrar
+    defaults: { _controller: UserBundle:Registration:register }
+
+registro:
+    path: /registro
+    defaults: { _controller: UserBundle:Registration:index }
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

@@ -1,0 +1,19 @@
+producto_pelota_index:
+    path:     /
+    defaults: { _controller: "LaFuentePrestamoBundle:Pelota:index" }
+    methods:  [GET, POST]
+
+producto_pelota_show:
+    path:     /{id}/show
+    defaults: { _controller: "LaFuentePrestamoBundle:Pelota:show" }
+    methods:  GET
+
+producto_pelota_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "LaFuentePrestamoBundle:Pelota:edit" }
+    methods:  [GET, POST]
+
+producto_pelota_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "LaFuentePrestamoBundle:Pelota:delete" }
+    methods:  GET

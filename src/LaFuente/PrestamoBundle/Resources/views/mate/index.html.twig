@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+
+{% set activeMenu = "Productos" %}
+{% set activeSubMenu = "Mate" %}
+
+{% block breadcrumb %}
+  <li><a href="#">Producto</a></li>
+  <li class="active">Mate Inicio</li>
+{% endblock %}
+
+{% block sectionBody %}
+<div class="row">
+  <div class="col-md-7">
+    <h1>Lista de Mates</h1>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Creado</th>
+                <th>Activo</th>
+                <th>Nota</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for mate in mates %}
+            <tr>
+                <td>{{ mate.id }}</td>
+                <td>{% if mate.createdAt %}{{ mate.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if mate.availability %}Si{% else %}No{% endif %}</td>
+                <td>{{ mate.notes }}</td>
+                <td>
+                  <a class="btn btn-success" href="{{ path('producto_mate_show', { 'id': mate.id }) }}" title="Ver"><span class='glyphicon glyphicon-eye-open'></span></a>
+                  <a class="btn btn-primary" href="{{ path('producto_mate_edit', { 'id': mate.id }) }}" title="Editar"><span class='glyphicon glyphicon-pencil' ></span></a>
+                  <a class="btn btn-danger" href="{{path('producto_mate_delete', { 'id': mate.id })}}" title='Eliminar'><span class='glyphicon glyphicon-remove'></span></a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+  </div>
+  <div class="col-md-5">
+    <h1>Crear Mate</h1>
+
+    {{ form_start(form) }}
+        <div class="form-group">
+          <div class="checkbox">
+            <label>
+              {{ form_widget(form.availability) }}<span class="checkbox-material"></span> {{ form_label(form.availability) }}
+            </label>
+          </div>
+        </div>
+        <div class="form-group label-floating is-empty">
+            <label class="control-label">Nota</label>
+           {{ form_widget(form.notes, {'attr': {'class': 'form-control'}}) }}
+            <span class="material-input"></span>
+        </div>
+        <div class="form-group">
+          {{ form_label(form.estado) }}
+          {{ form_widget(form.estado, {'attr': {'class': 'form-control', 'data-dropdownjs':'true'}}) }}
+          <span class="material-input"></span>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Crear" />
+    {{ form_end(form) }}
+
+  </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3SbyFGlZKCWqTkydIlRHcUWPgPJyfqrA&callback=laFuentePrestamos.newUserPage.initGoogleMaps" async defer ></script>
+  <script src="{{ asset('js/imageViewer.js') }}" type="text/javascript" charset="utf-8"></script>
+  <script src="{{ asset('js/laFuente/pages/newUser.js') }}" type="text/javascript" charset="utf-8"></script>
+{% endblock %}
