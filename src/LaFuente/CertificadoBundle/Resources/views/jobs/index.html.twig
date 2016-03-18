@@ -1,0 +1,40 @@
+{% extends "LaFuenteCertificadoBundle::default.html.twig" %}
+{% block lugar %}
+    <li class="active">Tareas</li>
+{% endblock lugar %}
+{% block main %}
+    <a href="{{ path('jobs_new') }}">
+        <div class="btn btn-primary dropdown-toggle margin-top1">
+            <span class="glyphicon glyphicon-plus"></span>
+                Agregar nueva Tarea
+        </div>
+    </a>
+    <h1>Lista de Tareas</h1>
+    <div class="table-responsive">
+        <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titulo</th>
+                <th>Tipo</th>
+                <th>Terminado</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for job in jobs %}
+            <tr>
+                <td><a href="{{ path('jobs_show', { 'id': job.id }) }}">{{ job.id }}</a></td>
+                <td>{{ job.titulo }}</td>
+                <td>{{ job.tipoCertificado.nombre }}</td>
+                <td>{% if job.terminado %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <a title="Ver" class="btn btn-primary" href="{{ path('jobs_show', { 'id': job.id }) }}"><span class="glyphicon glyphicon-eye-open"></span></a>
+                    <a title="Modificar" class="btn btn-primary" href="{{ path('jobs_edit', { 'id': job.id }) }}"><span class="glyphicon glyphicon-pencil"></span></a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

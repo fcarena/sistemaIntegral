@@ -18,6 +18,8 @@ class AppKernel extends Kernel
             new LaFuente\PrestamoBundle\LaFuentePrestamoBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new LaFuente\UserBundle\UserBundle(),
+            new LaFuente\BackendBundle\LaFuenteBackendBundle(),
+            new LaFuente\CertificadoBundle\LaFuenteCertificadoBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

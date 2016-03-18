@@ -1,0 +1,24 @@
+tipocertificado_index:
+    path:     /
+    defaults: { _controller: "LaFuenteCertificadoBundle:TipoCertificado:index" }
+    methods:  GET
+
+tipocertificado_show:
+    path:     /{id}/show
+    defaults: { _controller: "LaFuenteCertificadoBundle:TipoCertificado:show" }
+    methods:  GET
+
+tipocertificado_new:
+    path:     /new
+    defaults: { _controller: "LaFuenteCertificadoBundle:TipoCertificado:new" }
+    methods:  [GET, POST]
+
+tipocertificado_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "LaFuenteCertificadoBundle:TipoCertificado:edit" }
+    methods:  [GET, POST]
+
+tipocertificado_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "LaFuenteCertificadoBundle:TipoCertificado:delete" }
+    methods:  [GET]

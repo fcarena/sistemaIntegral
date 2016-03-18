@@ -1,0 +1,35 @@
+{% extends "LaFuenteCertificadoBundle::default.html.twig" %}
+{% block lugar %}
+    <li><a href="{{ path('tipocertificado_index') }}">Tipo de Certificados</a></li>
+    <li class="active">Editar {{tipoCertificado.nombre }}</li>
+{% endblock lugar %}
+{% block main %}
+    {{ form_start(edit_form) }}
+     <div class="overflow">
+        <div class="col-md-7 col-md-offset-2">
+            <div class="panel panel-default ">
+                <div class="panel-heading"><span class="glyphicon glyphicon-plus">Editando {{tipoCertificado.nombre}}</span>
+                </div>
+                    {{ form_widget(edit_form._token) }}
+                <div class="panel-body form-group ">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Nombre</label>
+                            {{ form_widget(edit_form.nombre, {'attr': {'class': 'form-control', 'placeholder': 'nombre'}}) }}
+                        </div>
+                    </div>
+                   
+                    <div class="margin-top1">
+                    <div class="margin-top1">
+                        <input class="btn btn-primary dropdown-toggle col-md-6" type="submit" value="Editar" />
+                        <a href="{{ path('tipocertificado_delete', { 'id': tipoCertificado.id }) }}" class="btn btn-danger dropdown-toggle col-md-6">Eliminar</a>
+                    </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ form_end(edit_form) }}
+    
+{% endblock %}

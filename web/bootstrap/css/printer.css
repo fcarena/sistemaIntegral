@@ -1,0 +1,124 @@
+body{
+    font-size:1em !important;
+    width:100%;
+    margin:0;
+    padding:0;
+}
+.printer{
+    margin:auto;
+    width:92%;
+}
+.printer h3{
+    font-size:1.5em !important;
+}
+.printer td{
+    padding:7px;
+}
+.printer span{
+    display:block;
+    text-transform:uppercase;
+}
+.printer img{
+    max-width: 390px;
+}
+.printer div{
+    padding:2px;
+    border:1px solid #E6E6E6;
+    min-height: 21px;
+}
+.printer-head{
+    width:100%;
+    min-height:30mm;
+}
+.printer-head img{
+    max-height:30mm;
+    width:100%;
+}
+.printer-col-left{
+    margin-right:10px;
+}
+.printer-tall{
+    height:250px;
+    max-height:250px;
+    overflow:hidden;
+}
+.printer-medium{
+    height:100px;
+    max-height:100px;
+    overflow:hidden;
+}
+.printer-item{
+    border:0 !important;
+    display:block;
+    float:left;
+    background:#E6E6E6;
+    padding:5px !important;
+    padding-left:10px !important;
+    padding-right:10px !important;
+    margin:10px !important;
+}
+.printer-item-mini{
+    border:0 !important;
+    width:200px;
+    display:block;
+    float:left;
+    padding-top:5px;
+    margin-bottom:5px;
+    margin-left:20px;
+    overflow: hidden;
+}
+.clear-fix{
+    border:0 !important;
+    clear:both;
+    padding:0 !important;
+}
+.printer-empty{
+    border:0 !important;
+    padding:20px;
+}
+.printer-center{
+    text-align: center;
+}
+#focusArea{
+    border:0px !important;
+}
+.center{
+    text-align: center;
+}
+.right{
+    text-align: right;
+}
+.border-top{
+    border:0px !important;
+    border-top:1px solid #E6E6E6 !important;
+}
+canvas{
+    position:absolute;
+}
+.intervencion{
+    color:#2E9AFE;
+}
+
+.printer-document{
+    height: 385mm!important;
+    overflow: hidden;
+}
+
+#footer{
+    position: relative!important;
+    /*margin-top: 277mm;
+    */
+    height: 20mm;
+    width: 100%;
+}
+#footer > img {
+    width: 100%;
+}
+
+.body{
+    min-height: 339mm;   
+}
+
+.img-small{
+    max-width: 200px!important;
+}

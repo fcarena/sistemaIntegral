@@ -1,0 +1,40 @@
+{% extends "LaFuenteCertificadoBundle::default.html.twig" %}
+
+{% block main %}
+    <h1>Jobs</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ job.id }}</td>
+            </tr>
+            <tr>
+                <th>Titulo</th>
+                <td>{{ job.titulo }}</td>
+            </tr>
+            <tr>
+                <th>Cuerpo</th>
+                <td>{{ job.cuerpo }}</td>
+            </tr>
+            <tr>
+                <th>Terminado</th>
+                <td>{% if job.terminado %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('jobs_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('jobs_edit', { 'id': job.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

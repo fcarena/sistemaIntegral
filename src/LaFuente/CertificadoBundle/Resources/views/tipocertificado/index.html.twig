@@ -1,0 +1,37 @@
+{% extends "LaFuenteCertificadoBundle::default.html.twig" %}
+{% block lugar %}
+    <li class="active">Tipo de Certificados</li>
+{% endblock lugar %}
+{% block main %}
+    <a href="{{ path('tipocertificado_new') }}">
+        <div class="btn btn-primary dropdown-toggle margin-top1">
+            <span class="glyphicon glyphicon-plus"></span>
+                Agregar nuevo Tipo de Certificado
+        </div>
+    </a>
+    <h1>Lista de Tipos de Certificados</h1>
+    <div class="table-responsive">
+        <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tipoCertificado in tipoCertificados %}
+            <tr>
+                <td><a href="{{ path('tipocertificado_show', { 'id': tipoCertificado.id }) }}">{{ tipoCertificado.id }}</a></td>
+                <td>{{ tipoCertificado.nombre }}</td>
+                <td>
+                    <a title="Ver" class="btn btn-primary" href="{{ path('tipocertificado_show', { 'id': tipoCertificado.id }) }}"><span class="glyphicon glyphicon-eye-open"></span></a>
+                    <a title="Modificar" class="btn btn-primary" href="{{ path('tipocertificado_edit', { 'id': tipoCertificado.id }) }}"><span class="glyphicon glyphicon-pencil"></span></a>
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "LaFuenteCertificadoBundle::default.html.twig" %}
+{% block lugar %}
+    <li class="active">Firmantes</li>
+{% endblock lugar %}
+{% block main %}
+    <a href="{{ path('firmante_new') }}">
+        <div class="btn btn-primary dropdown-toggle margin-top1">
+            <span class="glyphicon glyphicon-plus"></span>
+                Agregar nuevo Firmante
+        </div>
+    </a>
+    <h1>Lista de Firmantes</h1>
+    <div class="table-responsive">
+        <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Dni</th>
+                <th>Nombre</th>
+                <th>Rol del Firmante</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for firmante in firmantes %}
+            <tr>
+                <td><a href="{{ path('firmante_show', { 'id': firmante.id }) }}">{{ firmante.id }}</a></td>
+                <td>{{ firmante.dni }}</td>
+                <td>{{ firmante.nombre }}</td>
+                <td>{{ firmante.tipoRolFirmante }}</td>
+                <td>
+                    <a title="Ver" class="btn btn-primary" href="{{ path('firmante_show', { 'id': firmante.id }) }}"><span class="glyphicon glyphicon-eye-open"></span></a>
+                    <a title="Modificar" class="btn btn-primary" href="{{ path('firmante_edit', { 'id': firmante.id }) }}"><span class="glyphicon glyphicon-pencil"></span></a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

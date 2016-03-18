@@ -26,4 +26,14 @@ class PrestamoController extends Controller
         ));
 
     }
+
+    public function devolucionTotalAction(){
+        $em = $this->getDoctrine();
+        $prestamosActivos=$em->getRepository('LaFuentePrestamoBundle:Prestamo')->findByEstado("Activo");
+        return $this->render('LaFuentePrestamoBundle:prestamo:index.html.twig', array(
+          "prestamosFinalizados" => $prestamosActivos,
+        ));
+
+    }
+
 }

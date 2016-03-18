@@ -1,3 +1,11 @@
+la_fuente_certificado:
+    resource: "@LaFuenteCertificadoBundle/Resources/config/routing.yml"
+    prefix:   /certificado
+
+la_fuenteb_backend:
+    resource: "@LaFuenteBackendBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
 la_fuente_user:
     resource: "@UserBundle/Resources/config/routing.yml"
     prefix:   /

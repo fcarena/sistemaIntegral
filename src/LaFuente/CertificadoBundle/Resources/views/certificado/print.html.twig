@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>{{ titulo }}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        
+        <script src="{{ asset('bootstrap/js/jquery-1.10.2.min.js') }}"></script>
+        <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+    
+        <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}" />
+        <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap-theme.css') }}" />
+    </head>
+    <body>
+        <div class="certificado">
+            <header class="ecabezado">
+                encabezado
+            </header>
+            <section id="cuerpo">
+                {{ include(template_from_string(page.template)) }}
+            </section>
+            <section id="firmas" class="main" >
+                firmas
+            </section>
+        </div>       
+    </body>
+</html>

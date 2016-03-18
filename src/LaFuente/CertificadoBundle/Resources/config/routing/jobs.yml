@@ -1,0 +1,24 @@
+jobs_index:
+    path:     /
+    defaults: { _controller: "LaFuenteCertificadoBundle:Jobs:index" }
+    methods:  GET
+
+jobs_show:
+    path:     /{id}/show
+    defaults: { _controller: "LaFuenteCertificadoBundle:Jobs:show" }
+    methods:  GET
+
+jobs_new:
+    path:     /new
+    defaults: { _controller: "LaFuenteCertificadoBundle:Jobs:new" }
+    methods:  [GET, POST]
+
+jobs_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "LaFuenteCertificadoBundle:Jobs:edit" }
+    methods:  [GET, POST]
+
+jobs_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "LaFuenteCertificadoBundle:Jobs:delete" }
+    methods:  [GET]

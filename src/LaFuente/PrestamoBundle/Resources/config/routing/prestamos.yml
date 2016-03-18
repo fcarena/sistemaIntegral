@@ -2,3 +2,8 @@ prestamos_index:
     path:     /bitacora
     defaults: { _controller: "LaFuentePrestamoBundle:Prestamo:index" }
     methods:  GET
+
+prestamos_devolucion:
+    path:     /bitacora/{{id}}/devolucionTotal
+    defaults: { _controller: "LaFuentePrestamoBundle:Prestamo:devolucionTotal" }
+    methods:  GET

@@ -1,0 +1,40 @@
+{% extends "LaFuenteCertificadoBundle::default.html.twig" %}
+{% block lugar %}
+    <li class="active">Personas</li>
+{% endblock lugar %}
+{% block main %}
+    <a href="{{ path('persona_new') }}">
+        <div class="btn btn-primary dropdown-toggle margin-top1">
+            <span class="glyphicon glyphicon-plus"></span>
+                Agregar nueva Persona
+        </div>
+    </a>
+    <h1>Lista de Personas</h1>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Dni</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for persona in personas %}
+                    <tr>
+                        <td><a href="{{ path('persona_show', { 'id': persona.id }) }}">{{ persona.id }}</a></td>
+                        <td>{{ persona.dni }}</td>
+                        <td>{{ persona.nombre }}</td>
+                        <td>{{ persona.email }}</td>
+                        <td>
+                            <a title="Ver" class="btn btn-primary" href="{{ path('persona_show', { 'id': persona.id }) }}"><span class="glyphicon glyphicon-eye-open"></span></a>
+                                <a title="Modificar" class="btn btn-primary" href="{{ path('persona_edit', { 'id': persona.id }) }}"><span class="glyphicon glyphicon-pencil"></span></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

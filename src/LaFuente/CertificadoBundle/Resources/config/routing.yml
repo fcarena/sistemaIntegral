@@ -1,0 +1,27 @@
+certificado_firmante:
+    resource: "@LaFuenteCertificadoBundle/Resources/config/routing/firmante.yml"
+    prefix:   /firmante
+
+certificado_jobs:
+    resource: "@LaFuenteCertificadoBundle/Resources/config/routing/jobs.yml"
+    prefix:   /jobs
+
+certificado_persona:
+    resource: "@LaFuenteCertificadoBundle/Resources/config/routing/persona.yml"
+    prefix:   /persona
+
+certificado_tiporolpersona:
+    resource: "@LaFuenteCertificadoBundle/Resources/config/routing/tiporolpersona.yml"
+    prefix:   /tiporolpersona
+
+certificado_tipocertificado:
+    resource: "@LaFuenteCertificadoBundle/Resources/config/routing/tipocertificado.yml"
+    prefix:   /tipocertificado
+
+certificado_homepage:
+    path:     /
+    defaults: { _controller: LaFuenteCertificadoBundle:Default:index }
+
+template_index:
+    path: /template/{id}
+    defaults: { _controller: LaFuenteCertificadoBundle:Template:index }

@@ -1,0 +1,47 @@
+{% extends "LaFuenteCertificadoBundle::default.html.twig" %}
+
+{% block lugar %}
+    <li><a href="{{ path('persona_index') }}">Personas</a></li>
+    <li class="active">Crear</li>
+{% endblock lugar %}
+
+{% block main %}
+    {{ form_start(form) }}
+     <div class="overflow">
+        <div class="col-md-7 col-md-offset-2">
+            <div class="panel panel-default ">
+                <div class="panel-heading"><span class="glyphicon glyphicon-plus">Agregar una Persona</span>
+                </div>
+                    {{ form_widget(form._token) }}
+                <div class="panel-body form-group ">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Nombre</label>
+                            {{ form_widget(form.nombre, {'attr': {'class': 'form-control', 'placeholder': 'nombre'}}) }}
+                        </div>
+                        <div class="col-md-6">
+                            <label>DNI</label>
+                            {{ form_widget(form.dni, {'attr': {'class': 'form-control', 'placeholder': 'nro DNI'}}) }}
+                        </div>
+                    </div>
+                    <div class="row margin-top1">
+                        <div class="col-md-6">
+                            <label>Email</label>
+                            {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'mail@server.com'}}) }}
+                        </div>
+                        <div class="col-md-6">
+                            <label>Rol</label>
+                            {{ form_widget(form.tipoRolPersona, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                   
+                    <div class="margin-top1">
+                        <input class="btn btn-primary dropdown-toggle col-md-12" type="submit" value="Crear" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}

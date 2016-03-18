@@ -1,0 +1,67 @@
+{% extends "LaFuenteCertificadoBundle::default.html.twig" %}
+{% block lugar %}
+    <li><a href="{{ path('jobs_index') }}">Tareas</a></li>
+    <li class="active">Editando {{ job.titulo }}</li>
+{% endblock lugar %}
+{% block script %}
+    {{ parent() }}
+    <script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
+    <script type="text/javascript">
+      tinymce.init({
+        selector: '#cuerpo',
+          schema: 'html5'
+      });
+    </script>
+{% endblock script %}
+{% block main %}
+    {{ form_start(edit_form) }}
+     <div class="overflow">
+        <div class="col-md-7 col-md-offset-2">
+            <div class="panel panel-default ">
+                <div class="panel-heading"><span class="glyphicon glyphicon-plus">Editando {{job.titulo}}</span>
+                </div>
+                    {{ form_widget(edit_form._token) }}
+                <div class="panel-body form-group ">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Titulo</label>
+                            {{ form_widget(edit_form.titulo, {'attr': {'class': 'form-control', 'placeholder': 'Titulo'}}) }}
+                        </div>
+                        <div class="col-md-4">
+                            <label>Tipo de Certificado</label>
+                            {{ form_widget(edit_form.tipoCertificado, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <div class="col-md-2">
+                            <label>Terminado</label>
+                            {{ form_widget(edit_form.terminado, {'attr': {'style' : 'height:30px; width: 100%;'}}) }}
+                        </div>
+                    </div>
+                    <div class="row margin-top1">
+                        <div class="col-md-12">
+                            <label>Curpo del Certificado</label>
+                            {{ form_widget(edit_form.cuerpo, {'attr': {'class': 'form-control', 'placeholder': 'Curpo del Certificado', 'rows' : "7" }, 'required': 'true' ,'id' : "cuerpo"}) }}
+                        </div>
+                    </div>
+                    <div class="row margin-top1">
+                        <div class="col-md-6">
+                            <label>Quienes Firman?</label>
+                            {{ form_widget(edit_form.firmantes, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <div class="col-md-6">
+                            <label>Quienes lo Reciben?</label>
+                            {{ form_widget(edit_form.personas, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                   
+                    <div class="margin-top1">
+                        <input class="btn btn-primary dropdown-toggle col-md-6" type="submit" value="Editar" />
+                        <a href="{{ path('jobs_delete', { 'id': job.id }) }}" class="btn btn-danger dropdown-toggle col-md-6">Eliminar</a>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ form_end(edit_form) }}
+{% endblock %}

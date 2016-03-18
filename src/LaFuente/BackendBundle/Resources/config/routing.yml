@@ -1,0 +1,3 @@
+la_fuenteb_backend_homepage:
+    path:     /
+    defaults: { _controller: LaFuenteBackendBundle:Default:index }

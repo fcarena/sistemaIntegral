@@ -1,0 +1,24 @@
+tiporolpersona_index:
+    path:     /
+    defaults: { _controller: "LaFuenteCertificadoBundle:TipoRolPersona:index" }
+    methods:  GET
+
+tiporolpersona_show:
+    path:     /{id}/show
+    defaults: { _controller: "LaFuenteCertificadoBundle:TipoRolPersona:show" }
+    methods:  GET
+
+tiporolpersona_new:
+    path:     /new
+    defaults: { _controller: "LaFuenteCertificadoBundle:TipoRolPersona:new" }
+    methods:  [GET, POST]
+
+tiporolpersona_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "LaFuenteCertificadoBundle:TipoRolPersona:edit" }
+    methods:  [GET, POST]
+
+tiporolpersona_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "LaFuenteCertificadoBundle:TipoRolPersona:delete" }
+    methods:  [GET]
