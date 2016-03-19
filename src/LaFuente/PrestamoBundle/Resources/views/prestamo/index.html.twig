@@ -10,50 +10,129 @@
 
 {% block sectionBody %}
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-12" id="paginacion">
 
     <h1>Lista de Prestamos Finalizados</h1>
-
+    <div class="row">
+      <div class="col-md-offset-1">
+      <div class="form-group">
+          <div class="col-md-10">
+              <input type="text" class="input-busqueda form-control" placeholder="Inicie su búsqueda aquí ...">
+          </div>
+          <div class="col-md-2">
+              <span class="input-group-btn input-group-sm">
+                <button type="button" class="btn btn-fab btn-fab-mini dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                  <span class="glyphicon glyphicon-filter"></span>
+                </button>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="opcionesDeFiltrado" style="padding:10px;">
+                <li role="presentation">
+                    <input type="checkbox" name="busqueda" value="dni" checked>
+                    <label>Alumno DNI</label>
+                </li>
+                <li role="presentation">
+                    <input type="checkbox" name="busqueda" value="nombre" checked>
+                    <label>Alumno Nombre</label>
+                </li>
+                <li role="presentation">
+                    <input type="checkbox" name="busqueda" value="productos" checked>
+                    <label>Productos</label>
+                </li>
+              </ul>
+            </span>
+            </div>
+          </div>
+      </div>
+    </div>
     <table class="table table-hover">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Alumno DNI</th>
-                <th>Alumno Nombre</th>
-                <th>Realizado el</th>
-                <th>Realizado por</th>
-                <th>Recibido el</th>
-                <th>Productos</th>
-                <th>Descripcion</th>
+                <th>
+                  <button class="sort btn short-btn-order" data-sort="id">
+                      <span class="glyphicon glyphicon-sort"></span>
+                  </button>
+                  #
+                </th>
+                <th>
+                  <button class="sort btn short-btn-order" data-sort="dni">
+                      <span class="glyphicon glyphicon-sort"></span>
+                  </button>
+                  Alumno DNI
+                </th>
+                <th>
+                  <button class="sort btn short-btn-order" data-sort="nombre">
+                      <span class="glyphicon glyphicon-sort"></span>
+                  </button>
+                  Alumno Nombre
+                </th>
+                <th>
+                  <button class="sort btn short-btn-order" data-sort="realizado">
+                    <span class="glyphicon glyphicon-sort"></span>
+                  </button>
+                  Realizado el
+                </th>
+                <th>
+                  <button class="sort btn short-btn-order" data-sort="realizadoPor">
+                      <span class="glyphicon glyphicon-sort"></span>
+                  </button>
+                  Realizado por
+                </th>
+                <th>
+                  <button class="sort btn short-btn-order" data-sort="recibido">
+                      <span class="glyphicon glyphicon-sort"></span>
+                  </button>
+                  Recibido el
+                </th>
+                <th>
+                  <button class="sort btn short-btn-order" data-sort="productos">
+                      <span class="glyphicon glyphicon-sort"></span>
+                  </button>
+                  Productos
+                </th>
+                <th>
+                  <button class="sort btn short-btn-order" data-sort="descripcion">
+                      <span class="glyphicon glyphicon-sort"></span>
+                  </button>
+                  Descripcion
+                </th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="list">
 
         {% for prestamo in prestamosFinalizados %}
             <tr>
-              <td>{{ prestamo.id }}</td>
-                <td>{{ prestamo.usuario.dni }}</td>
-                <td>{{ prestamo.usuario.apellido }}, {{ prestamo.usuario.nombre }}</td>
-                <td>{% if prestamo.fecha %}{{ prestamo.fecha |date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ prestamo.prestador.username }}</td>
-                <td>{% if prestamo.fechaRecibido %}{{ prestamo.fechaRecibido |date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ prestamo.usuario.dni }}</td>
-                <td>
+              <td class="id" >{{ prestamo.id }}</td>
+                <td class="dni" >{{ prestamo.usuario.dni }}</td>
+                <td class="nombre" >{{ prestamo.usuario.apellido }}, {{ prestamo.usuario.nombre }}</td>
+                <td class="realizado">{% if prestamo.fecha %}{{ prestamo.fecha |date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="realizadoPor">{{ prestamo.prestador.username }}</td>
+                <td class="recibido">{% if prestamo.fechaRecibido %}{{ prestamo.fechaRecibido |date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="productos">
                   <ul class="list-group">
                     {% for producto in prestamo.products %}
                       <li  class="list-group-item">{{producto.product}}</li>
                     {% endfor %}
                   </ul>
                 </td>
-                <td>{{ prestamo.descripcion }}</td>
+                <td class="descripcion">
+                  {% if prestamo.descripcion %}
+                    {{ prestamo.descripcion }}
+                  {% else %}
+                    no posee descripcion
+                  {% endif %}
+                </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+    <div class="col-md-4 col-md-offset-4">
+        <ul class="pagination"></ul>
+    </div>
   </div>
 </div>
 {% endblock %}
 
 {% block javascripts %}
-  {#<script src="{{ asset('js/laFuente/pages/indexPrestamo.js') }}" type="text/javascript" charset="utf-8"></script>#}
+  <script src="{{ asset('js/list.pagination.js') }}" type="text/javascript" charset="utf-8"></script>
+  <script src="{{ asset('js/list.js') }}" type="text/javascript" charset="utf-8"></script>
+  <script src="{{ asset('js/laFuente/pages/bitacoraPrestamos.js') }}" type="text/javascript" charset="utf-8"></script>
 {% endblock %}

@@ -64,6 +64,10 @@ class PrestamoProducto
         return $this->id;
     }
 
+    public function __toString()
+    {
+        return (String) $this->id;
+    }
     /**
      * Set devueltoAt
      *

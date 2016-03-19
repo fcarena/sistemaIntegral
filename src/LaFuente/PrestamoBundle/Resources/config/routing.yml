@@ -26,4 +26,4 @@ la_fuente_prestamo_producto_bombilla:
 
 la_fuente_prestamo_prestamos:
     resource: "@LaFuentePrestamoBundle/Resources/config/routing/prestamos.yml"
-    prefix:   /prestamos
+    prefix:   /

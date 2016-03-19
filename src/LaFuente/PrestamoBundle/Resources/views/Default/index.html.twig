@@ -1,6 +1,5 @@
 {% extends 'base.html.twig' %}
 
-
 {% set activeMenu = "Dashboard" %}
 
 {% block breadcrumb %}
@@ -10,7 +9,7 @@
 
 {% block sectionBody %}
 <div class="row">
-  <div class="col-md-7">
+  <div class="col-md-7"  id="paginacion">
     {% if status is not empty %}
       <div class="alert {% if status %} alert-success {% else %}alert-danger {% endif %} alert-dismissible" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -18,39 +17,104 @@
       </div>
     {% endif %}
     <h1>Lista de Prestamos Activos</h1>
-
+    <div class="row">
+      <div class="col-md-offset-1">
+      <div class="form-group">
+          <div class="col-md-10">
+              <input type="text" class="input-busqueda form-control" placeholder="Inicie su búsqueda aquí ...">
+          </div>
+          <div class="col-md-2">
+              <span class="input-group-btn input-group-sm">
+                <button type="button" class="btn btn-fab btn-fab-mini dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                  <span class="glyphicon glyphicon-filter"></span>
+                </button>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="opcionesDeFiltrado" style="padding:10px;">
+                <li role="presentation">
+                    <input type="checkbox" name="busqueda" value="nombre" checked>
+                    <label>Alumno Nombre</label>
+                </li>
+                <li role="presentation">
+                    <input type="checkbox" name="busqueda" value="dni" checked>
+                    <label>Alumno DNI</label>
+                </li>
+                <li role="presentation">
+                    <input type="checkbox" name="busqueda" value="productos" checked>
+                    <label>Productos</label>
+                </li>
+              </ul>
+            </span>
+            </div>
+          </div>
+      </div>
+    </div>
     <table class="table table-hover">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Alumno</th>
-                <th>Realizado el</th>
-                <th>Productos</th>
+                <th>
+                  <button class="sort btn short-btn-order" data-sort="id">
+                      <i class="material-icons">&#xE8D5;</i>
+                  </button>
+                  Id
+                </th>
+                <th>
+                  <button class="sort btn short-btn-order" data-sort="nombre">
+                      <i class="material-icons">&#xE8D5;</i>
+                  </button>
+                  Alumno
+                </th>
+                <th>
+                  <button class="sort btn short-btn-order" data-sort="dni">
+                      <i class="material-icons">&#xE8D5;</i>
+                  </button>
+                  DNI
+                </th>
+                <th>
+                  <button class="sort btn short-btn-order" data-sort="realizado">
+                      <i class="material-icons">&#xE8D5;</i>
+                  </button>
+                  Realizado el
+                </th>
+                <th>
+                  <button class="sort btn short-btn-order" data-sort="productos">
+                      <i class="material-icons">&#xE8D5;</i>
+                  </button>
+                  Productos
+                </th>
                 <th>Acciones</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="list">
 
         {% for prestamo in prestamosActivos %}
-            <tr>
-              <td>{{ prestamo.id }}</td>
-                <td>{{ prestamo.usuario.apellido }}, {{ prestamo.usuario.nombre }}</td>
-                <td>{% if prestamo.fecha %}{{ prestamo.fecha |date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
-                  <ul class="list-group">
+            <tr prestamo-id="{{ prestamo }}">
+              <td class="id">{{ prestamo.id }}</td>
+                <td class="nombre">{{ prestamo.usuario.apellido }}, {{ prestamo.usuario.nombre }}</td>
+                <td class="dni">{{ prestamo.usuario.dni }}</td>
+                <td class="fecha">{% if prestamo.fecha %}{{ prestamo.fecha |date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="productos">
                     {% for producto in prestamo.products %}
-                      <li  class="list-group-item">{{producto.product}}</li>
+                      {% if producto.devueltoAt != null %}
+                        <div>{{producto.product}}</div>
+                      {% else %}
+                        <div class="checkbox min-chekck">
+                          <label>
+                            <input type="checkbox" id="inputMate" productoPrestamo="{{producto}}" > {{producto.product}}
+                          </label>
+                        </div>
+                      {% endif %}
                     {% endfor %}
-                  </ul>
                 </td>
                 <td>
-                  <a class="btn btn-primary" href="" title="Devolucion Parcial"><i class="material-icons">&#xE876;</i></a>
-                  <a class="btn btn-success" href="" title="Devolucion Total"><i class="material-icons">&#xE877;</i></a>
+                  <span class="btn btn-primary devolucionParcial" title="Devolucion Parcial"><i class="material-icons">&#xE876;</i></span>
+                  <a class="btn btn-success" href="{{ path('prestamos_devolucion', { 'prestamo': prestamo })  }}" title="Devolucion Total"><i class="material-icons">&#xE877;</i></a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+    <div class="col-md-8 col-md-offset-2">
+        <ul class="pagination"></ul>
+    </div>
   </div>
   <div class="col-md-5">
     <article class="card">
@@ -64,7 +128,7 @@
             <div class="col-md-12">
               <div class="form-group label-floating is-empty">
                   <label for="dniAlumno"  class="control-label">DNI del Alumno</label>
-                  <input type="number" list="alumnos" class="form-control" id="dniAlumno" name="alumno">
+                  <input type="number" list="alumnos" class="input-busqueda form-control" id="dniAlumno" name="alumno" required>
                 <datalist id="alumnos">
                   {% for alumno in alumnos %}
                     <option data-value="{{alumno.id}}" value="{{alumno.dni}}"></option>
@@ -156,5 +220,7 @@
 {% endblock %}
 
 {% block javascripts %}
+  <script src="{{ asset('js/list.pagination.js') }}" type="text/javascript" charset="utf-8"></script>
+  <script src="{{ asset('js/list.js') }}" type="text/javascript" charset="utf-8"></script>
   <script src="{{ asset('js/laFuente/pages/indexPrestamo.js') }}" type="text/javascript" charset="utf-8"></script>
 {% endblock %}

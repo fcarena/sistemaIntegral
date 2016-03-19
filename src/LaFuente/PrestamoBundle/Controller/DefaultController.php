@@ -49,7 +49,7 @@ class DefaultController extends Controller
         'raquetas' => $raquetas
       );
 
-      $prestamosActivos=$em->getRepository('LaFuentePrestamoBundle:Prestamo')->findByEstado("Activo");
+      $prestamosActivos=$em->getRepository('LaFuentePrestamoBundle:Prestamo')->findByEstado(array("Activo", "Parcialmente Finalizado"));
       return $this->render('LaFuentePrestamoBundle:Default:index.html.twig', array(
         'alumnos' => $alumnos,
         'termos' => $termos,
@@ -67,8 +67,7 @@ class DefaultController extends Controller
       try {
         $prestamo = new Prestamo();
         $prestamo->setFecha((new \DateTime()));
-        $user = $this->getUser();
-        $prestamo->setPrestador($user);
+        $prestamo->setPrestador($this->getUser());
         $alumno = $em->getRepository('UserBundle:User')->findOneByDni($data['alumno']);
         if (!$alumno) {
           $em->getConnection()->rollback();

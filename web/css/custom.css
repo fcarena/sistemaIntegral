@@ -5,3 +5,21 @@
 .card .card-body {
     padding-bottom: 0px!important;
 }
+
+.btn-fab-mini{
+  border-radius: 100%!important;
+}
+
+.short-btn-order{
+  padding: 2px 4px!important;
+  border-radius: 100%!important;
+}
+
+.min-chekck{
+   margin-top: 0px!important;
+   margin-bottom: 0px!important;
+}
+
+.hidden{
+      display: none!important;
+}

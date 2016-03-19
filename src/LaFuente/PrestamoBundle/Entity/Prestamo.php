@@ -84,6 +84,12 @@ class Prestamo
         return $this->id;
     }
 
+
+    public function __toString()
+    {
+        return (String) $this->getId();
+    }
+
     /**
      * Set fecha
      *
@@ -115,7 +121,7 @@ class Prestamo
      */
     public function getFechaRecibido()
     {
-        return $this->fecha;
+        return $this->fechaRecibido;
     }
 
     /**

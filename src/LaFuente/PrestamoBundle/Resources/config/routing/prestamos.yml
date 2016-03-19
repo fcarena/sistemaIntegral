@@ -4,6 +4,11 @@ prestamos_index:
     methods:  GET
 
 prestamos_devolucion:
-    path:     /bitacora/{{id}}/devolucionTotal
+    path:     /{prestamo}/devolucionTotal
     defaults: { _controller: "LaFuentePrestamoBundle:Prestamo:devolucionTotal" }
     methods:  GET
+
+prestamos_devolucion_parcial:
+    path:     /devolucionParcial
+    defaults: { _controller: "LaFuentePrestamoBundle:Prestamo:devolucionParcial" }
+    methods:  [POST, GET]
