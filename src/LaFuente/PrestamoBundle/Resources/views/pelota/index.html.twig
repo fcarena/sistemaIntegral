@@ -37,7 +37,6 @@
                 <td>{% if pelotum.availability %}Si{% else %}No{% endif %}</td>
                 <td>{{ pelotum.notes }}</td>
                 <td>
-                  <a class="btn btn-success" href="{{ path('producto_pelota_show', { 'id': pelotum.id }) }}" title="Ver"><span class='glyphicon glyphicon-eye-open'></span></a>
                   <a class="btn btn-primary" href="{{ path('producto_pelota_edit', { 'id': pelotum.id }) }}" title="Editar"><span class='glyphicon glyphicon-pencil' ></span></a>
                   <a class="btn btn-danger" href="{{path('producto_pelota_delete', { 'id': pelotum.id })}}" title='Eliminar'><span class='glyphicon glyphicon-remove'></span></a>
                 </td>

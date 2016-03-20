@@ -35,7 +35,6 @@
                 <td>{% if termo.availability %}Si{% else %}No{% endif %}</td>
                 <td>{{ termo.notes }}</td>
                 <td>
-                  <a class="btn btn-success" href="{{ path('producto_termo_show', { 'id': termo.id }) }}" title="Ver"><span class='glyphicon glyphicon-eye-open'></span></a>
                   <a class="btn btn-primary" href="{{ path('producto_termo_edit', { 'id': termo.id }) }}" title="Editar"><span class='glyphicon glyphicon-pencil' ></span></a>
                   <a class="btn btn-danger" href="{{path('producto_termo_delete', { 'id': termo.id })}}" title='Eliminar'><span class='glyphicon glyphicon-remove'></span></a>
                 </td>

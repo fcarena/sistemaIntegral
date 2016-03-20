@@ -18,36 +18,20 @@ class JobsController extends Controller
      * Lists all Jobs entities.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-
-        $jobs = $em->getRepository('LaFuenteCertificadoBundle:Jobs')->findAll();
-
-        return $this->render('LaFuenteCertificadoBundle:jobs:index.html.twig', array(
-            'jobs' => $jobs,
-        ));
-    }
-
-    /**
-     * Creates a new Jobs entity.
-     *
-     */
-    public function newAction(Request $request)
-    {
         $job = new Jobs();
         $form = $this->createForm("LaFuente\CertificadoBundle\Form\JobsType", $job);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($job);
             $em->flush();
-
-            return $this->redirectToRoute('jobs_index');
         }
-
-        return $this->render('LaFuenteCertificadoBundle:jobs:new.html.twig', array(
+        $jobs = $em->getRepository('LaFuenteCertificadoBundle:Jobs')->findAll();
+        return $this->render('LaFuenteCertificadoBundle:jobs:index.html.twig', array(
+            'jobs' => $jobs,
             'job' => $job,
             'form' => $form->createView(),
         ));

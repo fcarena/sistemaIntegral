@@ -22,23 +22,9 @@ class FirmanteController extends Controller
      * Lists all Firmante entities.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-
-        $firmantes = $em->getRepository('LaFuenteCertificadoBundle:Firmante')->findAll();
-
-        return $this->render('LaFuenteCertificadoBundle:firmante:index.html.twig', array(
-            'firmantes' => $firmantes,
-        ));
-    }
-
-    /**
-     * Creates a new Firmante entity.
-     *
-     */
-    public function newAction(Request $request)
-    {
         $firmante = new Firmante();
         $form = $this->createForm('LaFuente\CertificadoBundle\Form\FirmanteType', $firmante);
         $form->handleRequest($request);
@@ -49,11 +35,12 @@ class FirmanteController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($firmante);
             $em->flush();
-
-            return $this->redirectToRoute('firmante_index');
         }
 
-        return $this->render('LaFuenteCertificadoBundle:firmante:new.html.twig', array(
+
+        $firmantes = $em->getRepository('LaFuenteCertificadoBundle:Firmante')->findAll();
+        return $this->render('LaFuenteCertificadoBundle:firmante:index.html.twig', array(
+            'firmantes' => $firmantes,
             'firmante' => $firmante,
             'form' => $form->createView(),
         ));

@@ -18,23 +18,9 @@ class TipoRolPersonaController extends Controller
      * Lists all TipoRolPersona entities.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-
-        $tipoRolPersonas = $em->getRepository('LaFuenteCertificadoBundle:TipoRolPersona')->findAll();
-
-        return $this->render('LaFuenteCertificadoBundle:tiporolpersona:index.html.twig', array(
-            'tipoRolPersonas' => $tipoRolPersonas,
-        ));
-    }
-
-    /**
-     * Creates a new TipoRolPersona entity.
-     *
-     */
-    public function newAction(Request $request)
-    {
         $tipoRolPersona = new TipoRolPersona();
         $form = $this->createForm("LaFuente\CertificadoBundle\Form\TipoRolPersonaType", $tipoRolPersona);
         $form->handleRequest($request);
@@ -42,17 +28,16 @@ class TipoRolPersonaController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($tipoRolPersona);
             $em->flush();
-
-            return $this->redirectToRoute('tiporolpersona_index');
         }
 
-        return $this->render('LaFuenteCertificadoBundle:tiporolpersona:new.html.twig', array(
+        $tipoRolPersonas = $em->getRepository('LaFuenteCertificadoBundle:TipoRolPersona')->findAll();
+        return $this->render('LaFuenteCertificadoBundle:tiporolpersona:index.html.twig', array(
+            'tipoRolPersonas' => $tipoRolPersonas,
             'tipoRolPersona' => $tipoRolPersona,
             'form' => $form->createView(),
         ));
     }
 
-    
 
     /**
      * Finds and displays a TipoRolPersona entity.

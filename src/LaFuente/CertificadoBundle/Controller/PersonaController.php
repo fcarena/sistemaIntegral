@@ -18,40 +18,25 @@ class PersonaController extends Controller
      * Lists all Persona entities.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-
-        $personas = $em->getRepository('LaFuenteCertificadoBundle:Persona')->findAll();
-
-        return $this->render('LaFuenteCertificadoBundle:persona:index.html.twig', array(
-            'personas' => $personas,
-        ));
-    }
-
-    /**
-     * Creates a new Persona entity.
-     *
-     */
-    public function newAction(Request $request)
-    {
         $persona = new Persona();
         $form = $this->createForm("LaFuente\CertificadoBundle\Form\PersonaType", $persona);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($persona);
             $em->flush();
-
-            return $this->redirectToRoute('persona_index');
         }
-
-        return $this->render('LaFuenteCertificadoBundle:persona:new.html.twig', array(
+        $personas = $em->getRepository('LaFuenteCertificadoBundle:Persona')->findAll();
+        return $this->render('LaFuenteCertificadoBundle:persona:index.html.twig', array(
+            'personas' => $personas,
             'persona' => $persona,
             'form' => $form->createView(),
         ));
     }
+
 
     /**
      * Finds and displays a Persona entity.
@@ -103,7 +88,7 @@ class PersonaController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->remove($persona);
         $em->flush();
-    
+
         return $this->redirectToRoute('persona_index');
     }
 

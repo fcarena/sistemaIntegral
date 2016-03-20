@@ -10,23 +10,34 @@
 {% endblock %}
 
 {% block sectionBody %}
-    <h1>Pelota edit</h1>
-
+    <h1>Editar Pelota</h1>
     {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
+      <div class="form-group">
+        <div class="checkbox">
+          <label>
+            {{ form_widget(edit_form.availability) }}<span class="checkbox-material"></span> {{ form_label(edit_form.availability) }}
+          </label>
+        </div>
+      </div>
+      <div class="form-group label-floating is-empty">
+          <label class="control-label">Nota</label>
+         {{ form_widget(edit_form.notes, {'attr': {'class': 'form-control'}}) }}
+          <span class="material-input"></span>
+      </div>
+      <div class="form-group">
+        {{ form_label(edit_form.estado) }}
+        {{ form_widget(edit_form.estado, {'attr': {'class': 'form-control', 'data-dropdownjs':'true'}}) }}
+        <span class="material-input"></span>
+      </div>
+      <div class="form-group">
+        {{ form_label(edit_form.identifier) }}
+        {{ form_widget(edit_form.identifier, {'attr': {'class': 'form-control', 'data-dropdownjs':'true'}}) }}
+        <span class="material-input"></span>
+      </div>
+      <a class="btn btn-default" href="{{ path('producto_pelota_index') }}"> Volver</a>
+      <input type="submit" class="btn btn-primary" value="Crear" />
     {{ form_end(edit_form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('producto_pelota_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
   {% endblock %}
 
   {% block javascripts %}

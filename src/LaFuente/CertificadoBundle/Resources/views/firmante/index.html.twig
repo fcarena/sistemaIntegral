@@ -8,15 +8,10 @@
 {% endblock %}
 
 {% block sectionBody %}
-    <a href="{{ path('firmante_new') }}">
-        <div class="btn btn-primary dropdown-toggle margin-top1">
-            <span class="glyphicon glyphicon-plus"></span>
-                Agregar nuevo Firmante
-        </div>
-    </a>
+<div class="row">
+  <div class="col-md-7">
     <h1>Lista de Firmantes</h1>
-    <div class="table-responsive">
-        <table class="table table-hover">
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th>Id</th>
@@ -34,11 +29,44 @@
                 <td>{{ firmante.nombre }}</td>
                 <td>{{ firmante.tipoRolFirmante }}</td>
                 <td>
-                    <a title="Ver" class="btn btn-primary" href="{{ path('firmante_show', { 'id': firmante.id }) }}"><span class="glyphicon glyphicon-eye-open"></span></a>
                     <a title="Modificar" class="btn btn-primary" href="{{ path('firmante_edit', { 'id': firmante.id }) }}"><span class="glyphicon glyphicon-pencil"></span></a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+  </div>
+  <div class="col-md-5">
+    <h1>Crear Firmante</h1>
+    {{ form_start(form) }}
+        <div class="form-group label-floating is-empty">
+            <label class="control-label">Nombre</label>
+            {{ form_widget(form.nombre, {'attr': {'class': 'form-control', 'placeholder': 'nombre'}}) }}
+            <span class="material-input"></span>
+        </div>
+        <div class="form-group label-floating is-empty">
+          <label class="control-label">DNI</label>
+          {{ form_widget(form.dni, {'attr': {'class': 'form-control', 'placeholder': 'nro DNI'}}) }}
+          <span class="material-input"></span>
+        </div>
+        <div class="form-group is-empty is-fileinput">
+          <label class="control-label">Firma Digital</label>
+          <input type="file" id="firmante_firma" name="firmante[firma]" required="required" class="form-control">
+          <span class="material-input"></span>
+        </div>
+        <div class="form-group label-floating is-empty">
+          <label class="control-label">Rol</label>
+          {{ form_widget(form.tipoRolFirmante, {'attr': {'class': 'form-control'}}) }}
+          <span class="material-input"></span>
+        </div>
+        <div class="form-group label-floating is-empty">
+          <label class="control-label">Tareas</label>
+          {{ form_widget(form.jobs, {'attr': {'class': 'form-control', 'placeholder': 'mail@server.com'}}) }}
+          <span class="material-input"></span>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Crear" />
+     {{ form_end(form) }}
+  </div>
+</div>
+
 {% endblock %}

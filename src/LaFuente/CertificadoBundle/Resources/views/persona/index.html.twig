@@ -8,38 +8,60 @@
 {% endblock %}
 
 {% block sectionBody %}
-    <a href="{{ path('persona_new') }}">
-        <div class="btn btn-primary dropdown-toggle margin-top1">
-            <span class="glyphicon glyphicon-plus"></span>
-                Agregar nueva Persona
-        </div>
-    </a>
+<div class="row">
+  <div class="col-md-7">
     <h1>Lista de Personas</h1>
-    <div class="table-responsive">
-        <table class="table table-hover">
-            <thead>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Dni</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for persona in personas %}
                 <tr>
-                    <th>Id</th>
-                    <th>Dni</th>
-                    <th>Nombre</th>
-                    <th>Email</th>
-                    <th>Actions</th>
+                    <td><a href="{{ path('persona_show', { 'id': persona.id }) }}">{{ persona.id }}</a></td>
+                    <td>{{ persona.dni }}</td>
+                    <td>{{ persona.nombre }}</td>
+                    <td>{{ persona.email }}</td>
+                    <td>
+                        <a title="Ver" class="btn btn-primary" href="{{ path('persona_show', { 'id': persona.id }) }}"><span class="glyphicon glyphicon-eye-open"></span></a>
+                            <a title="Modificar" class="btn btn-primary" href="{{ path('persona_edit', { 'id': persona.id }) }}"><span class="glyphicon glyphicon-pencil"></span></a>
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                {% for persona in personas %}
-                    <tr>
-                        <td><a href="{{ path('persona_show', { 'id': persona.id }) }}">{{ persona.id }}</a></td>
-                        <td>{{ persona.dni }}</td>
-                        <td>{{ persona.nombre }}</td>
-                        <td>{{ persona.email }}</td>
-                        <td>
-                            <a title="Ver" class="btn btn-primary" href="{{ path('persona_show', { 'id': persona.id }) }}"><span class="glyphicon glyphicon-eye-open"></span></a>
-                                <a title="Modificar" class="btn btn-primary" href="{{ path('persona_edit', { 'id': persona.id }) }}"><span class="glyphicon glyphicon-pencil"></span></a>
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+            {% endfor %}
+        </tbody>
+    </table>
+  </div>
+    <div class="col-md-5">
+      <h1>Crear Persona</h1>
+      {{ form_start(form) }}
+          <div class="form-group label-floating is-empty">
+              <label class="control-label">Nombre</label>
+              {{ form_widget(form.nombre, {'attr': {'class': 'form-control', 'placeholder': 'nombre'}}) }}
+              <span class="material-input"></span>
+          </div>
+          <div class="form-group label-floating is-empty">
+            <label class="control-label">DNI</label>
+            {{ form_widget(form.dni, {'attr': {'class': 'form-control', 'placeholder': 'nro DNI'}}) }}
+            <span class="material-input"></span>
+          </div>
+          <div class="form-group label-floating is-empty">
+            <label class="control-label">Email</label>
+            {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'mail@server.com'}}) }}
+            <span class="material-input"></span>
+          </div>
+          <div class="form-group label-floating is-empty">
+            <label class="control-label">Rol</label>
+            {{ form_widget(form.tipoRolPersona, {'attr': {'class': 'form-control'}}) }}
+            <span class="material-input"></span>
+          </div>
+          <input type="submit" class="btn btn-primary" value="Crear" />
+       {{ form_end(form) }}
     </div>
+  </div>
 {% endblock %}

@@ -18,23 +18,9 @@ class TipoCertificadoController extends Controller
      * Lists all TipoCertificado entities.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-
-        $tipoCertificados = $em->getRepository('LaFuenteCertificadoBundle:TipoCertificado')->findAll();
-
-        return $this->render('LaFuenteCertificadoBundle:tipocertificado:index.html.twig', array(
-            'tipoCertificados' => $tipoCertificados,
-        ));
-    }
-
-    /**
-     * Creates a new TipoCertificado entity.
-     *
-     */
-    public function newAction(Request $request)
-    {
         $tipoCertificado = new TipoCertificado();
         $form = $this->createForm("LaFuente\CertificadoBundle\Form\TipoCertificadoType", $tipoCertificado);
         $form->handleRequest($request);
@@ -43,11 +29,11 @@ class TipoCertificadoController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($tipoCertificado);
             $em->flush();
-
-            return $this->redirectToRoute('tipocertificado_index');
         }
 
-        return $this->render('LaFuenteCertificadoBundle:tipocertificado:new.html.twig', array(
+        $tipoCertificados = $em->getRepository('LaFuenteCertificadoBundle:TipoCertificado')->findAll();
+        return $this->render('LaFuenteCertificadoBundle:tipocertificado:index.html.twig', array(
+            'tipoCertificados' => $tipoCertificados,
             'tipoCertificado' => $tipoCertificado,
             'form' => $form->createView(),
         ));
@@ -104,7 +90,7 @@ class TipoCertificadoController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($tipoCertificado);
             $em->flush();
-        
+
 
         return $this->redirectToRoute('tipocertificado_index');
     }

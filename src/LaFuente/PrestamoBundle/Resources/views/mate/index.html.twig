@@ -33,7 +33,6 @@
                 <td>{% if mate.availability %}Si{% else %}No{% endif %}</td>
                 <td>{{ mate.notes }}</td>
                 <td>
-                  <a class="btn btn-success" href="{{ path('producto_mate_show', { 'id': mate.id }) }}" title="Ver"><span class='glyphicon glyphicon-eye-open'></span></a>
                   <a class="btn btn-primary" href="{{ path('producto_mate_edit', { 'id': mate.id }) }}" title="Editar"><span class='glyphicon glyphicon-pencil' ></span></a>
                   <a class="btn btn-danger" href="{{path('producto_mate_delete', { 'id': mate.id })}}" title='Eliminar'><span class='glyphicon glyphicon-remove'></span></a>
                 </td>

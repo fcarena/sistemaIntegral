@@ -8,15 +8,10 @@
 {% endblock %}
 
 {% block sectionBody %}
-    <a href="{{ path('jobs_new') }}">
-        <div class="btn btn-primary dropdown-toggle margin-top1">
-            <span class="glyphicon glyphicon-plus"></span>
-                Agregar nueva Tarea
-        </div>
-    </a>
+<div class="row">
+  <div class="col-md-7">
     <h1>Lista de Tareas</h1>
-    <div class="table-responsive">
-        <table class="table table-hover">
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th>Id</th>
@@ -41,5 +36,39 @@
         {% endfor %}
         </tbody>
     </table>
+  </div>
+    <div class="col-md-5">
+      <h1>Crear Tarea</h1>
+      {{ form_start(form) }}
+          <div class="form-group label-floating is-empty">
+              <label class="control-label">Titulo</label>
+              {{ form_widget(form.titulo, {'attr': {'class': 'form-control', 'placeholder': 'Titulo'}}) }}
+              <span class="material-input"></span>
+          </div>
+          <div class="form-group label-floating is-empty">
+            <label class="control-label">Tipo de Certificado</label>
+            {{ form_widget(form.tipoCertificado, {'attr': {'class': 'form-control'}}) }}
+            <span class="material-input"></span>
+          </div>
+          <div class="form-group label-floating is-empty">
+            <label class="control-label">Cuerpo del Certificado</label>
+            {{ form_widget(form.cuerpo, {'attr': {'class': 'form-control', 'placeholder': 'Curpo del Certificado'}, 'required': 'true' , 'id' : "cuerpo"}) }}
+            <span class="material-input"></span>
+          </div>
+          <div class="form-group label-floating is-empty">
+            <label class="control-label">Quienes Firman?</label>
+            {{ form_widget(form.firmantes, {'attr': {'class': 'form-control'}}) }}
+            <span class="material-input"></span>
+          </div>
+          <div class="form-group label-floating is-empty">
+            <label class="control-label">Quienes lo Reciben?</label>
+            {{ form_widget(form.personas, {'attr': {'class': 'form-control'}}) }}
+            <span class="material-input"></span>
+          </div>
+          {{ form_widget(form.terminado, {'attr': {'class': 'form-control hidden'}}) }}
+          <input type="submit" class="btn btn-primary" value="Crear" />
+       {{ form_end(form) }}
+    </div>
+  </div>
 
 {% endblock %}

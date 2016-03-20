@@ -6,14 +6,9 @@
   <li class="active">Inicio</li>
 {% endblock %}
 {% block sectionBody %}
-    <a href="{{ path('tipocertificado_new') }}">
-        <div class="btn btn-primary dropdown-toggle margin-top1">
-            <span class="glyphicon glyphicon-plus"></span>
-                Agregar nuevo Tipo de Certificado
-        </div>
-    </a>
+<div class="row">
+  <div class="col-md-7">
     <h1>Lista de Tipos de Certificados</h1>
-    <div class="table-responsive">
         <table class="table table-hover">
         <thead>
             <tr>
@@ -36,5 +31,17 @@
         {% endfor %}
         </tbody>
     </table>
+  </div>
+  <div class="col-md-5">
+    <h1>Crear Tipo de Certificado</h1>
+    {{ form_start(form) }}
+        <div class="form-group label-floating is-empty">
+            <label class="control-label">Nombre</label>
+            {{ form_widget(form.nombre, {'attr': {'class': 'form-control', 'placeholder': 'nombre'}}) }}
+            <span class="material-input"></span>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Crear" />
+     {{ form_end(form) }}
+  </div>
 </div>
 {% endblock %}

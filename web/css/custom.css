@@ -23,3 +23,58 @@
 .hidden{
       display: none!important;
 }
+#mainMenu #menu li.active > a .icon {
+    color: #FF5722;
+    border-color:#ddd;
+}
+
+.checkbox input[type=checkbox]:checked+.checkbox-material .check, .checkbox-default input[type=checkbox]:checked+.checkbox-material .check {
+    color: #FF5722;
+}
+.checkbox input[type=checkbox]:checked+.checkbox-material .check:before, .checkbox-default input[type=checkbox]:checked+.checkbox-material .check:before {
+    color: #FF5722;
+}
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 2;
+    color: #fff;
+    background-color: #FF5722;
+    border-color: #ddd;
+}
+
+.label-primary, .btn-primary{
+    background-color: #FF5722!important;
+    color: #fff!important;
+}
+.label-primary:hover, .btn-primary:hover{
+    color: #000!important;
+}
+.form-group .control-label, .form-group-default .control-label {
+}
+.white{
+  color: #fff!important;
+}
+.bg-primary {
+    background-color: #848786;
+}
+.nav-tabs {
+    background: #4B4E4D;
+}
+.card .nav-head > .nav > li.active > a {
+    border-bottom: 4px solid #FFFFEF !important;
+}
+.pagination>li>a, .pagination>li>span {
+  color: #848786;
+}
+
+.card .nav-head > .nav > li:hover:not(.active) > a {
+  background-color: #848786 !important;
+  border-bottom: 4px solid #E5E6E6 !important;
+}
+
+.form-group .form-control:focus, .form-group-default .form-control:focus {
+    background-image: linear-gradient(#ff5722,#ff5722),linear-gradient(#d2d2d2,#d2d2d2);
+}
+
+.dropdown-menu li a:hover, .dropdown-menu-default li a:hover {
+    color: #FF5722;
+}

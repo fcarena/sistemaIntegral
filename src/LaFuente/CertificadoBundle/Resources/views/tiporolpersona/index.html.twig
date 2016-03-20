@@ -6,14 +6,9 @@
   <li class="active">Inicio</li>
 {% endblock %}
 {% block sectionBody %}
-    <a href="{{ path('tiporolpersona_new') }}">
-        <div class="btn btn-primary dropdown-toggle margin-top1">
-            <span class="glyphicon glyphicon-plus"></span>
-                Agregar nuevo Tipos de Rol de Personas
-        </div>
-    </a>
+<div class="row">
+  <div class="col-md-7">
     <h1>Lista de Tipos de Rol de Personas</h1>
-    <div class="table-responsive">
         <table class="table table-hover">
         <thead>
             <tr>
@@ -35,4 +30,17 @@
         {% endfor %}
         </tbody>
     </table>
+  </div>
+  <div class="col-md-5">
+    <h1>Crear Tipos de Rol de Personas</h1>
+    {{ form_start(form) }}
+        <div class="form-group label-floating is-empty">
+            <label class="control-label">Nombre</label>
+            {{ form_widget(form.nombre, {'attr': {'class': 'form-control', 'placeholder': 'nombre'}}) }}
+            <span class="material-input"></span>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Crear" />
+     {{ form_end(form) }}
+  </div>
+</div>
 {% endblock %}

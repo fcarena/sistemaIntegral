@@ -37,7 +37,6 @@
                 <td>{% if raquetum.availability %}Si{% else %}No{% endif %}</td>
                 <td>{{ raquetum.notes }}</td>
                 <td>
-                  <a class="btn btn-success" href="{{ path('producto_raqueta_show', { 'id': raquetum.id }) }}" title="Ver"><span class='glyphicon glyphicon-eye-open'></span></a>
                   <a class="btn btn-primary" href="{{ path('producto_raqueta_edit', { 'id': raquetum.id }) }}" title="Editar"><span class='glyphicon glyphicon-pencil' ></span></a>
                   <a class="btn btn-danger" href="{{path('producto_raqueta_delete', { 'id': raquetum.id })}}" title='Eliminar'><span class='glyphicon glyphicon-remove'></span></a>
                 </td>
@@ -47,7 +46,7 @@
     </table>
   </div>
   <div class="col-md-5">
-    <h1>Crear Raqueta</h1>
+    <h1>Crear Paleta</h1>
     {{ form_start(form) }}
         <div class="form-group">
           <div class="checkbox">
