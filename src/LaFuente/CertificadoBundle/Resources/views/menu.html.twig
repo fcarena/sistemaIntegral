@@ -1,0 +1,22 @@
+{% if not activeMenu is defined %}{% set activeMenu = "" %}{% endif %}
+{% if not activeSubMenu is defined %}{% set activeSubMenu = "" %}{% endif %}
+<ul class="metismenu" id="menu">
+  <li{% if activeMenu == "home" %} class="active"{% endif %}>
+    <a href="{{ path('certificado_homepage') }}"><div class="icon"><i class="mi">&#xE88A;</i></div> <span class="title">Inicio</span></a>
+  </li>
+  <li{% if activeMenu == "persona" %} class="active"{% endif %}>
+    <a href="{{ path('persona_index') }}"><div class="icon"><i class="mi">&#xE8D3;</i></div> <span class="title">Personas</span></a>
+  </li>
+  <li{% if activeMenu == "tipoRolPersona" %} class="active"{% endif %}>
+    <a href="{{ path('tiporolpersona_index') }}"><div class="icon"><i class="mi">&#xE85E;</i></div> <span class="title">Rol de Personas</span></a>
+  </li>
+  <li{% if activeMenu == "firmante" %} class="active"{% endif %}>
+    <a href="{{ path('firmante_index') }}"><div class="icon"><i class="mi">&#xe862;</i></div> <span class="title">Firmante</span></a>
+  </li>
+  <li{% if activeMenu == "jobs" %} class="active"{% endif %}>
+    <a href="{{ path('jobs_index') }}"><div class="icon"><i class="mi">&#xE616;</i></div> <span class="title">Tareas</span></a>
+  </li>
+  <li{% if activeMenu == "tipoCertificado" %} class="active"{% endif %}>
+    <a href="{{ path('tipocertificado_index') }}"><div class="icon"><i class="mi">&#xE89C;</i></div> <span class="title">Tipo Certificado</span></a>
+  </li>
+</ul>

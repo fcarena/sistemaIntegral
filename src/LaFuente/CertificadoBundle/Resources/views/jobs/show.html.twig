@@ -1,6 +1,12 @@
-{% extends "LaFuenteCertificadoBundle::default.html.twig" %}
+{% extends "LaFuenteCertificadoBundle::layout.html.twig" %}
+{% set activeMenu = "jobs" %}
 
-{% block main %}
+{% block breadcrumb %}
+  <li><a href="#">Tarea</a></li>
+  <li class="active">Ver</li>
+{% endblock %}
+
+{% block sectionBody %}
     <h1>Jobs</h1>
 
     <table>

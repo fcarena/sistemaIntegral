@@ -1,6 +1,13 @@
-{% extends "LaFuenteCertificadoBundle::default.html.twig" %}
+{% extends "LaFuenteCertificadoBundle::layout.html.twig" %}
 
-{% block main %}
+{% set activeMenu = "firmante" %}
+
+{% block breadcrumb %}
+  <li><a href="#">Firmante</a></li>
+  <li class="active">Ver</li>
+{% endblock %}
+
+{% block sectionBody %}
     <h1>Firmante</h1>
 
     <table>

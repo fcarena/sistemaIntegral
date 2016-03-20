@@ -1,8 +1,13 @@
-{% extends "LaFuenteCertificadoBundle::default.html.twig" %}
-{% block lugar %}
-    <li class="active">Tareas</li>
-{% endblock lugar %}
-{% block main %}
+{% extends "LaFuenteCertificadoBundle::layout.html.twig" %}
+
+{% set activeMenu = "jobs" %}
+
+{% block breadcrumb %}
+  <li><a href="#">Tareas</a></li>
+  <li class="active">Inicio</li>
+{% endblock %}
+
+{% block sectionBody %}
     <a href="{{ path('jobs_new') }}">
         <div class="btn btn-primary dropdown-toggle margin-top1">
             <span class="glyphicon glyphicon-plus"></span>

@@ -1,11 +1,13 @@
-{% extends "LaFuenteCertificadoBundle::default.html.twig" %}
+{% extends "LaFuenteCertificadoBundle::layout.html.twig" %}
 
-{% block lugar %}
-    <li><a href="{{ path('persona_index') }}">Personas</a></li>
-    <li class="active">Editar {{persona.nombre}}</li>
-{% endblock lugar %}
+{% set activeMenu = "persona" %}
 
-{% block main %}
+{% block breadcrumb %}
+  <li><a href="#">Ṕersona</a></li>
+  <li class="active">Editar</li>
+{% endblock %}
+
+{% block sectionBody %}
     {{ form_start(edit_form) }}
      <div class="overflow">
         <div class="col-md-7 col-md-offset-2">
@@ -34,7 +36,7 @@
                             {{ form_widget(edit_form.tipoRolPersona, {'attr': {'class': 'form-control'}}) }}
                         </div>
                     </div>
-                   
+
                     <div class="margin-top1">
                         <input class="btn btn-primary dropdown-toggle col-md-6" type="submit" value="Editar" />
                         <a href="{{ path('persona_delete', { 'id': persona.id }) }}" class="btn btn-danger dropdown-toggle col-md-6">Eliminar</a>
@@ -45,5 +47,5 @@
         </div>
     </div>
     {{ form_end(edit_form) }}
-    
+
 {% endblock %}

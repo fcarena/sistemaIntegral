@@ -1,8 +1,13 @@
-{% extends "LaFuenteCertificadoBundle::default.html.twig" %}
-{% block lugar %}
-    <li class="active">Firmantes</li>
-{% endblock lugar %}
-{% block main %}
+{% extends "LaFuenteCertificadoBundle::layout.html.twig" %}
+
+{% set activeMenu = "firmante" %}
+
+{% block breadcrumb %}
+  <li><a href="#">Firmante</a></li>
+  <li class="active">Inicio</li>
+{% endblock %}
+
+{% block sectionBody %}
     <a href="{{ path('firmante_new') }}">
         <div class="btn btn-primary dropdown-toggle margin-top1">
             <span class="glyphicon glyphicon-plus"></span>

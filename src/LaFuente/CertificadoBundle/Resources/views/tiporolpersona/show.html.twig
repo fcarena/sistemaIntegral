@@ -1,6 +1,11 @@
-{% extends "LaFuenteCertificadoBundle::default.html.twig" %}
+{% extends "LaFuenteCertificadoBundle::layout.html.twig" %}
+{% set activeMenu = "tipoRolPersona" %}
 
-{% block main %}
+{% block breadcrumb %}
+  <li><a href="#">Tipos de Rol de Persona</a></li>
+  <li class="active">Ver</li>
+{% endblock %}
+{% block sectionBody %}
     <h1>TipoRolPersona</h1>
 
     <table>

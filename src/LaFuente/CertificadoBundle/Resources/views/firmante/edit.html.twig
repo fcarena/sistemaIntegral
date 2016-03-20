@@ -1,11 +1,13 @@
-{% extends "LaFuenteCertificadoBundle::default.html.twig" %}
+{% extends "LaFuenteCertificadoBundle::layout.html.twig" %}
 
-{% block lugar %}
-    <li><a href="{{ path('firmante_index') }}">Firmantes</a></li>
-    <li class="active">Editar {{ firmante.nombre }}</li>
-{% endblock lugar %}
+{% set activeMenu = "firmante" %}
 
-{% block main %}
+{% block breadcrumb %}
+  <li><a href="#">Firmante</a></li>
+  <li class="active">Editar</li>
+{% endblock %}
+
+{% block sectionBody %}
     {{ form_start(edit_form, {'attr': {'enctype': 'multipart/form-data'}}) }}
      <div class="overflow">
         <div class="col-md-7 col-md-offset-2">
@@ -48,7 +50,7 @@
                             </ul>
                         </div>
                     </div>
-                   
+
                     <div class="margin-top1">
                         <input class="btn btn-primary dropdown-toggle col-md-6" type="submit" value="Editar" />
                         <a href="{{ path('firmante_delete', { 'id': firmante.id }) }}" class="btn btn-danger dropdown-toggle col-md-6">Eliminar</a>
@@ -61,4 +63,3 @@
     </div>
     {{ form_end(edit_form) }}
 {% endblock %}
-

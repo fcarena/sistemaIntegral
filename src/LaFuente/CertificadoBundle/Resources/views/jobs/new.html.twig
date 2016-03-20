@@ -1,9 +1,11 @@
-{% extends "LaFuenteCertificadoBundle::default.html.twig" %}
+{% extends "LaFuenteCertificadoBundle::layout.html.twig" %}
+{% set activeMenu = "jobs" %}
 
-{% block lugar %}
-    <li><a href="{{ path('jobs_index') }}">Tareas</a></li>
-    <li class="active">Crear</li>
-{% endblock lugar %}
+{% block breadcrumb %}
+  <li><a href="#">Tarea</a></li>
+  <li class="active">Crear</li>
+{% endblock %}
+
 
 {% block script %}
     {{ parent() }}
@@ -16,7 +18,7 @@
     </script>
 {% endblock script %}
 
-{% block main %}
+{% block sectionBody %}
     {{ form_start(form) }}
      <div class="overflow">
         <div class="col-md-7 col-md-offset-2">
@@ -55,7 +57,7 @@
                             {{ form_widget(form.personas, {'attr': {'class': 'form-control'}}) }}
                         </div>
                     </div>
-                   
+
                     <div class="margin-top1">
                         <input class="btn btn-primary dropdown-toggle col-md-12" type="submit" value="Crear" />
                     </div>

@@ -1,11 +1,13 @@
-{% extends "LaFuenteCertificadoBundle::default.html.twig" %}
+{% extends "LaFuenteCertificadoBundle::layout.html.twig" %}
 
-{% block lugar %}
-    <li><a href="{{ path('firmante_index') }}">Firmantes</a></li>
-    <li class="active">Crear</li>
-{% endblock lugar %}
+{% set activeMenu = "firmante" %}
 
-{% block main %}
+{% block breadcrumb %}
+  <li><a href="#">Firmante</a></li>
+  <li class="active">Crear</li>
+{% endblock %}
+
+{% block sectionBody %}
     {{ form_start(form, {'attr': {'enctype': 'multipart/form-data'}}) }}
      <div class="overflow">
         <div class="col-md-7 col-md-offset-2">
@@ -27,7 +29,7 @@
                     <div class="row margin-top1">
                         <div class="col-md-6">
                             <label>Firma Digital</label>
-                            <input type="file" id="firmante_firma" name="firmante[firma]" required="required" class="form-control"> 
+                            <input type="file" id="firmante_firma" name="firmante[firma]" required="required" class="form-control">
                         </div>
                         <div class="col-md-6">
                             <label>Rol</label>
@@ -46,7 +48,7 @@
                             </ul>
                         </div>
                     </div>
-                   
+
                     <div class="margin-top1">
                         <input class="btn btn-primary dropdown-toggle col-md-12" type="submit" value="Crear" />
                     </div>
@@ -57,4 +59,3 @@
     </div>
     {{ form_end(form) }}
 {% endblock %}
-

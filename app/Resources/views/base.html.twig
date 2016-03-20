@@ -6,7 +6,7 @@
 	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="utf-8" name="keywords" content="LaFunete, Info, UNLP, Prestamos" />
 	<meta charset="utf-8" name="description" content="" />
-	<title>La Fuente :: Prestamos{% if page_title is defined %} :: {{ page_title }}{% endif %}</title>
+	<title>La Fuente{% if page_title is defined %} - {{ page_title }}{% endif %}</title>
 	<link href="{{ asset('favicon.png') }}" rel="shortcut icon" type="image/png" />
 	<link href="{{ asset('http://fonts.googleapis.com/css?family=Material+Icons|Roboto:300italic,400italic,300,400,500,700,900')}}" rel='stylesheet' type='text/css'>
   {# <link href="{{ asset('css/pre-compiled.min.css') }}" rel="stylesheet" type="text/css"> #}
@@ -20,14 +20,20 @@
 	<div class="nano-content">
 
   <header>
-  	{% include 'navbar.html.twig' %}
+  	{% use 'navbar.html.twig' with mainHeader as contenidoHeader %}
+		{% block mainHeader %}
+			{{ block('contenidoHeader') }}
+		{% endblock %}
   </header><!-- /header -->
 
-  <aside id="mainMenu" class="collapse navbar-collapse nano">
-  	<div class="nano-content">
-  		{% include 'menu.html.twig' %}
-  	</div>
-  </aside>
+	{% block mainMenu %}
+	  <aside id="mainMenu" class="collapse navbar-collapse nano">
+	  	<div class="nano-content">
+				{% block menu %}
+				{% endblock %}
+	  	</div>
+	  </aside>
+	{% endblock %}
 
 	<div id="main">
 		<div class="content">

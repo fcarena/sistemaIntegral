@@ -1,4 +1,4 @@
-{% extends "LaFuenteCertificadoBundle::default.html.twig" %}
+{% extends "LaFuenteCertificadoBundle::layout.html.twig" %}
 
 {% block script %}
 	{{ parent() }}
@@ -18,7 +18,7 @@
 	<link rel="stylesheet" href="{{ asset('fileUpload/css/style.css') }}">
 	<link rel="stylesheet" href="{{ asset('fileUpload/css/jquery.fileupload.css') }}">
 {% endblock stylesheet %}
-{% block main %}
+{% block sectionBody %}
     	<span class="btn btn-success fileinput-button">
         <i class="glyphicon glyphicon-plus"></i>
         <span>Agregar Imagen del Certificado</span>

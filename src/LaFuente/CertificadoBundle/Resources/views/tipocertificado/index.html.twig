@@ -1,8 +1,11 @@
-{% extends "LaFuenteCertificadoBundle::default.html.twig" %}
-{% block lugar %}
-    <li class="active">Tipo de Certificados</li>
-{% endblock lugar %}
-{% block main %}
+{% extends "LaFuenteCertificadoBundle::layout.html.twig" %}
+{% set activeMenu = "tipoCertificado" %}
+
+{% block breadcrumb %}
+  <li><a href="#">Tipo de Certificado</a></li>
+  <li class="active">Inicio</li>
+{% endblock %}
+{% block sectionBody %}
     <a href="{{ path('tipocertificado_new') }}">
         <div class="btn btn-primary dropdown-toggle margin-top1">
             <span class="glyphicon glyphicon-plus"></span>

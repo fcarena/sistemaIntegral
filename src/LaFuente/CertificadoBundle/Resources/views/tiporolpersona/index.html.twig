@@ -1,8 +1,11 @@
-{% extends "LaFuenteCertificadoBundle::default.html.twig" %}
-{% block lugar %}
-    <li class="active">Tipo de Roles</li>
-{% endblock lugar %}
-{% block main %}
+{% extends "LaFuenteCertificadoBundle::layout.html.twig" %}
+{% set activeMenu = "tipoRolPersona" %}
+
+{% block breadcrumb %}
+  <li><a href="#">Tipos de Rol de Persona</a></li>
+  <li class="active">Inicio</li>
+{% endblock %}
+{% block sectionBody %}
     <a href="{{ path('tiporolpersona_new') }}">
         <div class="btn btn-primary dropdown-toggle margin-top1">
             <span class="glyphicon glyphicon-plus"></span>
